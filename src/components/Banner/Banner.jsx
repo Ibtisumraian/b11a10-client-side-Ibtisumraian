@@ -8,7 +8,7 @@ const Banner = () => {
       <div className="relative w-9/12 mx-auto flex flex-col items-start justify-center h-full  text-black px-4">
         <h1 className="text-4xl md:text-7xl font-bold mb-4 text-[#333333] fontRokkitt">Endless Recipes. <br /> One Place</h1>
         <p className="text-lg md:text-base mb-6">Discover a world of flavors with our curated collection of recipes. <br /> Whether you're a seasoned chef or just starting out, <br /> find inspiration for every meal and occasion.</p>
-        <button className="bg-[#005A52] hover:bg-orange-600 text-white font-semibold px-6 py-3 rounded-lg transition">Explore Recipes</button>
+        <button className="bg-[#005A52]  text-white font-semibold px-6 py-3 rounded-lg ">Explore Recipes</button>
       </div>
     </div>
         </div>

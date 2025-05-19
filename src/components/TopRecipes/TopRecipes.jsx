@@ -110,6 +110,9 @@ const TopRecipes = () => {
             </div>
             </div>
             </div>
+            <div className='flex justify-center my-8'>
+                 <button className="bg-[#005A52] text-white font-semibold px-6 py-3 rounded-lg ">See All Recipes</button>
+            </div>
         </div>
     );
 };
