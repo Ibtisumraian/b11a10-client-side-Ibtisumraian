@@ -13,7 +13,18 @@ const AddRecipes = () => {
         recipeData.categories = categories
         const userRecipe = { ...recipeData, userEmail }
         console.log(userRecipe);
-        
+        fetch('http://localhost:5000/recipes', {
+            method: "POST",
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify(userRecipe)
+        })
+        .then(res=>res.json())
+        .then(data=>{
+            console.log(data);
+            e.target.reset()
+        })
     }
     return (
         <div>
@@ -50,6 +61,7 @@ const AddRecipes = () => {
                             <p className='text-base font-semibold py-2'>Cuisine</p>
                             <select name='cuisine' defaultValue="Select type" className="select w-[170px]">
                                 <option disabled={true}>Select type</option>
+                                <option>American</option>
                                 <option>Italian</option>
                                 <option>Mexican</option>
                                 <option>Indian</option>

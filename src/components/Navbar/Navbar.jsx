@@ -20,7 +20,7 @@ const Navbar = () => {
     const links = <>
         
         <NavLink to='/'><button className='btn'>Home</button></NavLink>
-        <NavLink><button className='btn'>All Recipes</button></NavLink>
+        <NavLink to='/AllRecipes'><button className='btn'>All Recipes</button></NavLink>
         <NavLink to='/AddRecipes'><button className='btn'>Add Recipes</button></NavLink>
         <NavLink><button className='btn'>My Recipes</button></NavLink>
         

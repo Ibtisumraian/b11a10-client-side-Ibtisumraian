@@ -1,10 +1,12 @@
 import React, { use } from 'react';
-import { Link } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../AuthContext/AuthContext';
 import { updateProfile } from 'firebase/auth';
 
 const SignUp = () => {
     const { user, userSignInWithGoogle, userSignUpWithEmailPass } = use(AuthContext);
+    const navigate = useNavigate()
+    const location = useLocation()
     console.log(user);
     
 
@@ -24,7 +26,8 @@ const SignUp = () => {
             await updateProfile(result.user, {
             displayName: username,
             photoURL: userPhoto,
-          });
+            });
+            navigate(location?.state || '/')
         })
         .catch(error=>{
             console.log(error);
@@ -37,6 +40,7 @@ const SignUp = () => {
         userSignInWithGoogle()
         .then(result=>{
             console.log(result);
+            navigate('/')
         })
         .catch(error => {
             console.log(error);
