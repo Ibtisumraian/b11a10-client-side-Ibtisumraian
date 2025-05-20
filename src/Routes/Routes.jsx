@@ -6,6 +6,7 @@ import SignIn from "../components/SignIn/SignIn";
 import SignUp from "../components/SignUp/SignUp";
 import PrivateRoute from "../components/PrivateRoute/PrivateRoute";
 import AllRecipes from "../Pages/AllRecipes/Allrecipes";
+import RecipeDetails from "../components/RecipeDetails/RecipeDetails";
 
 export const router = createBrowserRouter([
   {
@@ -25,6 +26,12 @@ export const router = createBrowserRouter([
           hydrateFallbackElement:<div className='  w-[90%] py-40 mx-auto flex justify-center items-center'><span className="loading loading-bars loading-xl"></span></div>,
           loader:()=>fetch('http://localhost:5000/recipes'),
           Component: AllRecipes
+        },
+        {
+          path: '/RecipeDetails/:id',
+          hydrateFallbackElement:<div className='  w-[90%] py-40 mx-auto flex justify-center items-center'><span className="loading loading-bars loading-xl"></span></div>,
+          loader:({params})=>fetch(`http://localhost:5000/recipes/${params.id}`),
+          element: <PrivateRoute><RecipeDetails></RecipeDetails></PrivateRoute>
         },
         {
           path: '/Signin',
