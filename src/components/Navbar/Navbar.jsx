@@ -1,7 +1,22 @@
-import React from 'react';
+import React, { use } from 'react';
 import { NavLink } from 'react-router';
+import { AuthContext } from '../AuthContext/AuthContext';
+import { signOut } from 'firebase/auth';
+import { auth } from '../firebase/firebase.init';
 
 const Navbar = () => {
+  const { user } = use(AuthContext)
+
+  const handleSignOut = () => {
+    signOut(auth)
+    .then(()=>{
+      
+    })
+      .catch((error => {
+      console.log(error);
+      
+    }))
+  }
     const links = <>
         
         <NavLink to='/'><button className='btn'>Home</button></NavLink>
@@ -35,8 +50,29 @@ const Navbar = () => {
     </ul>
   </div>
   <div className="navbar-end flex gap-3">
-    <NavLink to='/Signin'><button className='btn'>Sign In</button></NavLink>
-    <NavLink to='/Signup'><button className='btn'>Sign Up</button></NavLink>
+    
+            {
+              user ? <div className="dropdown dropdown-left">
+              <div tabIndex={0} role="button" className=" m-1">
+                
+                  <div className="avatar">
+                    <div className="w-16 rounded-full">
+                      <img src={user.photoURL} />
+                    </div>
+                  </div>
+                
+              </div>
+              <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-1 w-40 sm:w-52 p-2 shadow-sm">
+                    <li className='font-semibold'>{ user.displayName}</li>
+                    {/* <li>Balance : {blance} BDT</li> */}
+                    <button onClick={handleSignOut} className='btn btn-sm text-[#1C2B4A] hover:bg-[#6A9AD9] hover:text-white'>Sign Out</button>
+                  </ul>
+          </div> : <>
+                  <NavLink to='/Signin'><button className='btn'>Sign In</button></NavLink>
+                  <NavLink to='/Signup'><button className='btn'>Sign Up</button></NavLink>
+              </>
+            }
+    
   </div>
 </div>
         </div>

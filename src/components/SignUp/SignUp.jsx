@@ -1,18 +1,35 @@
 import React, { use } from 'react';
 import { Link } from 'react-router';
 import { AuthContext } from '../AuthContext/AuthContext';
+import { updateProfile } from 'firebase/auth';
 
 const SignUp = () => {
-    const { user, userSignInWithGoogle } = use(AuthContext);
+    const { user, userSignInWithGoogle, userSignUpWithEmailPass } = use(AuthContext);
     console.log(user);
     
 
     const handleFormSubmitBtn = (e) => {
         e.preventDefault()
-        const form = e.target
-        const formData = new FormData(form)
-        const user = Object.fromEntries(formData.entries());
-        console.log( user);
+        // const form = e.target
+        // const formData = new FormData(form)
+        // const user = Object.fromEntries(formData.entries());
+        // console.log(user);
+        const email = e.target.email.value
+        const password = e.target.password.value
+        const username = e.target.name.value
+        const userPhoto = e.target.photo.value
+        userSignUpWithEmailPass(email, password)
+        .then( async (result)=>{
+            console.log(result);
+            await updateProfile(result.user, {
+            displayName: username,
+            photoURL: userPhoto,
+          });
+        })
+        .catch(error=>{
+            console.log(error);
+            
+        })
         
     }
 
@@ -20,7 +37,6 @@ const SignUp = () => {
         userSignInWithGoogle()
         .then(result=>{
             console.log(result);
-            
         })
         .catch(error => {
             console.log(error);
