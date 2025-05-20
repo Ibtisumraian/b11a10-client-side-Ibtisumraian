@@ -1,15 +1,44 @@
-import React from 'react';
+import React, { use, useEffect, useState } from 'react';
 import { FaHeart } from 'react-icons/fa';
 import { useLoaderData } from 'react-router';
+import { AuthContext } from '../AuthContext/AuthContext';
 
 const RecipeDetails = () => {
+    const { user } = use(AuthContext)
+    const [likeCount, setLikeCount] = useState("")
     const recipe = useLoaderData()
-    console.log(recipe);
+    const like = parseInt(recipe.like_count)
+    useEffect(() => {
+        setLikeCount(like)
+    }, [like])
+    
     const handleLikeButton = () => {
         const email = recipe.userEmail
-        console.log(email);
+        if (user.email === email) {
+            return alert('You Can Not Like Your Own Recipe')
+        }
+        // const newLike = likeCount + 1
+        setLikeCount(likeCount + 1)
+        // recipe.like_count = likeCount
+        const newLikeCount = {
+            id: recipe._id,
+            like_count: likeCount + 1
+        }
+        fetch('http://localhost:5000/recipes', {
+            method: 'PATCH',
+            headers: {
+                "content-type":"application/json"
+            },
+            body: JSON.stringify(newLikeCount)
+        })
+        .then(res=>res.json())
+        .catch(data=>{
+            console.log(data);
+            
+        })
         
     }
+    console.log(likeCount);
     return (
         <div className='bg-[#F6F4F1]'>
             <div className='w-8/12 mx-auto flex justify-between py-24'>
@@ -49,7 +78,7 @@ const RecipeDetails = () => {
                             </div>
                             <div>
                                 <h1 className=' text-lg font-bold'>Like Count</h1>
-                                <p className='text-[#005A52] flex items-center gap-2.5'><FaHeart /> <span className='text-black'>{ recipe.like_count}</span></p>
+                                <p className='text-[#005A52] flex items-center gap-2.5'><FaHeart /> <span className='text-black'>{ likeCount}</span></p>
                             </div>
                             <div>
                                 <button onClick={handleLikeButton} className='btn w-full text-[#005A52] hover:bg-[#005A52] hover:text-white flex items-center justify-center gap-2'>Like <FaHeart /></button>
