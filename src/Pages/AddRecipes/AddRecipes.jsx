@@ -1,19 +1,23 @@
-import React from 'react';
+import React, { use } from 'react';
+import { AuthContext } from '../../components/AuthContext/AuthContext';
 
 const AddRecipes = () => {
+    const { user } = use(AuthContext);
     const handleAddRecipe = (e) => {
         e.preventDefault()
+        const userEmail = user.email
         const form = e.target
         const formData = new FormData(form)
         const categories = formData.getAll('categories')
         const recipeData = Object.fromEntries(formData.entries());
-        recipeData.categories=categories
-        console.log(recipeData);
+        recipeData.categories = categories
+        const userRecipe = { ...recipeData, userEmail }
+        console.log(userRecipe);
         
     }
     return (
         <div>
-            <div className='w-4/12 mx-auto rounded-2xl my-24 py-12 bg-[#a0d5b5]'>
+            <div className='w-4/12 mx-auto rounded-2xl my-24 py-12 bg-[#D0E5E0]'>
                 <div className='text-center py-8'>
                     <h1 className='text-5xl fontRokkitt font-semibold text-white'>Add Recipes</h1>
                 </div>
