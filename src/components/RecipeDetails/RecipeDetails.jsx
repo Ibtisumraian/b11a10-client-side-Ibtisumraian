@@ -2,6 +2,7 @@ import React, { use, useEffect, useState } from 'react';
 import { FaHeart } from 'react-icons/fa';
 import { useLoaderData } from 'react-router';
 import { AuthContext } from '../AuthContext/AuthContext';
+import { Typewriter } from 'react-simple-typewriter'
 
 const RecipeDetails = () => {
     useEffect(() => {
@@ -44,6 +45,21 @@ const RecipeDetails = () => {
     console.log(likeCount);
     return (
         <div className='bg-[#F6F4F1]'>
+            <div className='text-center py-5'>
+                <h1 className='text-5xl font-bold fontRokkitt'>
+                    <span className='text-[#005A52]'>
+                    <Typewriter
+                        words={[`${likeCount} people interested in this recipe`]}
+                        loop={Infinity} 
+                        cursor
+                        cursorStyle='||'
+                        typeSpeed={70}
+                        deleteSpeed={50}
+                        delaySpeed={1000}
+                    />
+                    </span>
+                </h1>
+                </div>
             <div className='w-8/12 mx-auto flex justify-between py-24'>
                 <div>
                     <img className='w-[600px] h-[400px] rounded-xl' src={recipe.photo} alt="" />
