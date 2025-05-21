@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../AuthContext/AuthContext';
 
 const SignIn = () => {
-    const { userSignInWithEmailPass } = use(AuthContext)
+    const { userSignInWithEmailPass, userSignInWithGoogle } = use(AuthContext)
     const navigate = useNavigate()
     const location = useLocation()
 
@@ -23,7 +23,15 @@ const SignIn = () => {
     }
 
     const handleSignInWithGoole = () => {
-        
+        userSignInWithGoogle()
+        .then(result=>{
+            console.log(result);
+            navigate('/')
+        })
+        .catch(error => {
+            console.log(error);
+            
+        })
     }
     return (
         <div className='sm:p-4 flex justify-center items-center bg-gradient-to-t from-[#D0E5E0] to-white'>
@@ -103,7 +111,7 @@ const SignIn = () => {
               </form>
               
               <div className="pt-3">
-                  <Link to='/Register'><p className='text-sm sm:text-base '>New to this site ? <span className="text-blue-700">Register</span></p></Link>
+                  <Link to='/SignUp'><p className='text-sm sm:text-base '>New to this site ? <span className="text-blue-700">Sign Up</span></p></Link>
               </div>
               <div className="pt-4">
                   <p className="text-center p-2">or</p>
