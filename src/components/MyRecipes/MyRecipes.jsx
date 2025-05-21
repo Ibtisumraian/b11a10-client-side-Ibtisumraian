@@ -2,6 +2,7 @@ import React, { use, useEffect, useState } from 'react';
 import { AuthContext } from '../AuthContext/AuthContext';
 import { FaHeart, FaRegHeart } from 'react-icons/fa';
 import { MdDelete, MdEdit } from 'react-icons/md';
+import Swal from 'sweetalert2';
 // import { useNavigate } from 'react-router';
 
 const MyRecipes = () => {
@@ -57,14 +58,49 @@ const MyRecipes = () => {
         .then(res=>res.json())
         .then(data=>{
             console.log("data after update", data);
-            
+            fetch(`https://recipe-book-server-six.vercel.app/user/${user.email}`)
+        .then(res=>res.json())
+        .then(data=>{
+            console.log(data);
+            setRecipe(data)
+        })
         })
         console.log(userRecipe);
         
         setModal(false)
     }
     const handleDeleteButton = (id) => {
-        console.log(id)
+        
+        Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`https://recipe-book-server-six.vercel.app/recipes/${id}`, {
+                        method: 'DELETE'
+                        })
+                        .then(res=>res.json())
+                        .then(data=>{
+                            if (data.deletedCount) {
+                                Swal.fire({
+                                    title: "Deleted!",
+                                    text: "Your file has been deleted.",
+                                    icon: "success"
+                        });
+                                window.location.reload()
+                                const deletedRecipe = recipes.filter(recipe => recipe._id !== id)
+                                setRecipe(deletedRecipe)
+                            }
+                            
+                })
+            
+        }
+        });
     }
     return (
         <div className='bg-[#F6F4F1]'>
@@ -131,18 +167,20 @@ const MyRecipes = () => {
 
 
             {modal && (
-        <div className="fixed inset-0 backdrop-blur-sm bg-opacity-50 flex items-center justify-center z-50 px-4">
-          <div className=" shadow-2xl  rounded-2xl w-full ">
+        <div className="fixed inset-0 backdrop-blur-sm bg-opacity-50 flex items-center justify-center z-50 ">
+          <div className=" shadow-2xl  w-full max-h-screen ">
            
            
            <div>
-            <div className='w-[600px] mx-auto rounded-2xl my-24 py-12 bg-[#D0E5E0]'>
+            <div className='w-fit max-h-[90vh] overflow-y-auto mx-auto rounded-2xl my-12 p-12 bg-[#D0E5E0]'>
                 <div className='text-center py-8'>
-                    <h1 className='text-5xl fontRokkitt font-semibold text-white'>Add Recipes</h1>
+                    <h1 className='text-5xl fontRokkitt font-semibold text-white'>Update Recipes</h1>
                 </div>
                 <form onSubmit={handelEditFormSubmit} >
                     <div className=' flex flex-col justify-center items-center'>                        
-                        <div>
+                      <div className=' gap-4'>
+                            <div>
+                              <div>
                             <div >
                             <p className='text-base font-semibold py-2'>Title</p>
                             <input name='title' defaultValue={modalData.title} type="text" placeholder="Title" className="input w-[350px]" />
@@ -163,8 +201,10 @@ const MyRecipes = () => {
                                 <textarea name='instructions' defaultValue={modalData.instructions} className="textarea w-[350px]" placeholder="Instructions"></textarea>
                             </div>
                             </div>
+                      </div>
                             
-                        <div className='w-[350px] flex gap-3'>
+                        <div>
+                                <div className='w-[350px] flex gap-3'>
                             <div>
                             <p className='text-base font-semibold py-2'>Cuisine</p>
                             <select name='cuisine' defaultValue={modalData.cuisine} className="select w-[170px]">
@@ -206,9 +246,11 @@ const MyRecipes = () => {
                             <p className='text-base font-semibold py-2'>Like Count</p>
                             <input name='like_count' type="number" value={modalData.like_count} placeholder="" className="input w-[350px]" />
                         </div>
+                        </div>
+                      </div>
                         
                         <div>
-                            <button className='btn w-[350px] my-8'>Add Recipe</button>
+                            <button className='btn w-[350px] my-8'>Update Recipe</button>
                         </div>
                     </div>                   
                 </form>              
@@ -217,14 +259,14 @@ const MyRecipes = () => {
         
         
         
-            <div className="flex justify-end ">
+            {/* <div className="flex justify-end ">
               
               <button
                 className="bg-[#7BA7E3] text-white btn"
                 onClick={()=>setModal(false)}>
                 Confirm
               </button>
-            </div>
+            </div> */}
           </div>
         </div>
       )}

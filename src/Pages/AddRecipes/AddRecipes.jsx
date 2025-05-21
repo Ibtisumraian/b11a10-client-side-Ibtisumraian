@@ -14,7 +14,7 @@ const AddRecipes = () => {
         recipeData.like_count= parseInt(recipeData.like_count)
         const userRecipe = { ...recipeData, userEmail }
         console.log(userRecipe);
-        fetch('https://recipe-book-server-six.vercel.app/', {
+        fetch('https://recipe-book-server-six.vercel.app/recipes', {
             method: "POST",
             headers: {
                 "content-type": "application/json"
