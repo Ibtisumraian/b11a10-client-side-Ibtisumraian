@@ -1,9 +1,12 @@
-import React, { use } from 'react';
+import React, { use, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../AuthContext/AuthContext';
 import { updateProfile } from 'firebase/auth';
 
 const SignUp = () => {
+    useEffect(() => {
+             window.scrollTo(0, 0)        
+         }, [])
     const { user, userSignInWithGoogle, userSignUpWithEmailPass } = use(AuthContext);
     const navigate = useNavigate()
     const location = useLocation()

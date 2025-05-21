@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FaHeart } from 'react-icons/fa';
 import { useLoaderData, useNavigate } from 'react-router';
 
 const AllRecipes = () => {
+    useEffect(() => {
+             window.scrollTo(0, 0)        
+         }, [])
     const recipes = useLoaderData()
     const navigate = useNavigate()
     console.log(recipes);

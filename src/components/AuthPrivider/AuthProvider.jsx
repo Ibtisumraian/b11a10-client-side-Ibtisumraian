@@ -6,6 +6,7 @@ import { auth } from '../firebase/firebase.init';
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null)
     const [loading, setLoading] = useState(true);
+    const [theme, setTheme] = useState("")
     const googleProvider = new GoogleAuthProvider()
 
     const userSignUpWithEmailPass = (email, password) => {
@@ -13,7 +14,7 @@ const AuthProvider = ({ children }) => {
         return createUserWithEmailAndPassword(auth, email, password)
     }
 
-    
+
     const userSignInWithEmailPass = (email, password) => {
         setLoading(true)
         return signInWithEmailAndPassword(auth, email, password)
@@ -39,7 +40,9 @@ const AuthProvider = ({ children }) => {
         loading,
         userSignUpWithEmailPass,
         userSignInWithEmailPass,
-        userSignInWithGoogle
+        userSignInWithGoogle,
+        setTheme,
+        theme
     }
     return (
         <AuthContext value={info}>

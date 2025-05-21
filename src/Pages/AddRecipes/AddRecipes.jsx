@@ -11,6 +11,7 @@ const AddRecipes = () => {
         const categories = formData.getAll('categories')
         const recipeData = Object.fromEntries(formData.entries());
         recipeData.categories = categories
+        recipeData.like_count= parseInt(recipeData.like_count)
         const userRecipe = { ...recipeData, userEmail }
         console.log(userRecipe);
         fetch('http://localhost:5000/recipes', {
@@ -96,7 +97,7 @@ const AddRecipes = () => {
                         </div>
                         <div>
                             <p className='text-base font-semibold py-2'>Like Count</p>
-                            <input name='like_count' type="number" defaultValue='0' placeholder="" className="input w-[350px]" />
+                            <input name='like_count' type="number" defaultValue={0} placeholder="" className="input w-[350px]" />
                         </div>
                         
                         <div>

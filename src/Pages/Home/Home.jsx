@@ -1,15 +1,36 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Banner from '../../components/Banner/Banner';
 import TopRecipes from '../../components/TopRecipes/TopRecipes';
+import { useLoaderData } from 'react-router';
 
 const Home = () => {
+    // const [topRecipes, setTopRecipes] = useState()
+    const topRecipes = useLoaderData()
+    console.log(topRecipes);
+    
+     useEffect(() => {
+         window.scrollTo(0, 0)        
+     }, [])
+    
+    useEffect(() => {
+    fetch('https://recipe-book-server-six.vercel.app/recipes')
+    .then(res => res.json())
+    .then(data => {
+      console.log(data);
+      
+    })
+    }, []);
+    
+    console.log(topRecipes);
+    
+
     return (
         <div>
             <div>
                 <Banner></Banner>
             </div>
             <div>
-                <TopRecipes></TopRecipes>
+                <TopRecipes topRecipes={topRecipes}></TopRecipes>
             </div>
             <div>
                 <div className='mt-24 w-9/12 mx-auto'>

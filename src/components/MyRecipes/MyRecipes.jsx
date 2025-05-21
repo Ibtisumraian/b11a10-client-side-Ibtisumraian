@@ -1,52 +1,42 @@
 import React, { use, useEffect, useState } from 'react';
-import { FaHeart } from 'react-icons/fa';
-import { useLoaderData } from 'react-router';
 import { AuthContext } from '../AuthContext/AuthContext';
+import { FaHeart, FaRegHeart } from 'react-icons/fa';
+import { MdDelete, MdEdit } from 'react-icons/md';
 
-const RecipeDetails = () => {
-    useEffect(() => {
-             window.scrollTo(0, 0)        
-         }, [])
+const MyRecipes = () => {
     const { user } = use(AuthContext)
-    const [likeCount, setLikeCount] = useState("")
-    const recipe = useLoaderData()
-    const like = parseInt(recipe.like_count)
+    const [recipes, setRecipe] = useState([])
+    console.log(recipes);
+
     useEffect(() => {
-        setLikeCount(like)
-    }, [like])
+        fetch(`https://recipe-book-server-six.vercel.app/user/${user.email}`)
+        .then(res=>res.json())
+        .then(data=>{
+            console.log(data);
+            setRecipe(data)
+        })
+    },[user])
     
     const handleLikeButton = () => {
-        const email = recipe.userEmail
-        if (user.email === email) {
-            return alert('You Can Not Like Your Own Recipe')
-        }
-        // const newLike = likeCount + 1
-        setLikeCount(likeCount + 1)
-        // recipe.like_count = likeCount
-        const newLikeCount = {
-            id: recipe._id,
-            like_count: likeCount + 1
-        }
-        fetch('https://recipe-book-server-six.vercel.app/recipes', {
-            method: 'PATCH',
-            headers: {
-                "content-type":"application/json"
-            },
-            body: JSON.stringify(newLikeCount)
-        })
-        .then(res=>res.json())
-        .catch(data=>{
-            console.log(data);
-            
-        })
+        alert("You Can Not Like Your Own Recipe")
+    }
+    const handleEditButton = (id) => {
+        console.log(id)
         
     }
-    console.log(likeCount);
+    const handleDeleteButton = (id) => {
+        console.log(id)
+    }
     return (
         <div className='bg-[#F6F4F1]'>
-            <div className='w-8/12 mx-auto flex justify-between py-24'>
+            <div className='text-center py-12'>
+                <h1 className='text-5xl font-bold fontRokkitt'>My Recipes</h1>
+            </div>
+            {
+                recipes.map(recipe => {
+                    return <div className='w-8/12 mx-auto 2xl:flex 2xl:justify-between  pb-24'>
                 <div>
-                    <img className='w-[600px] h-[400px] rounded-xl' src={recipe.photo} alt="" />
+                    <img className='w-[500px] h-[400px] rounded-xl' src={recipe.photo} alt="" />
                 </div>
                 <div className='flex items-center gap-8 '>
                     <div>
@@ -62,7 +52,8 @@ const RecipeDetails = () => {
                         </div>
                     </div>
                     </div>
-                        <div className='bg-white py-4 px-8 rounded-xl flex flex-col gap-3'>
+                        <div className='flex items-center'>
+                            <div className='bg-white py-4 px-8 rounded-xl flex flex-col gap-3'>
                             <div>
                                 <h1 className=' text-lg font-bold'>Cuisine Type</h1>
                                 <p>{ recipe.cuisine}</p>
@@ -81,17 +72,25 @@ const RecipeDetails = () => {
                             </div>
                             <div>
                                 <h1 className=' text-lg font-bold'>Like Count</h1>
-                                <p className='text-[#005A52] flex items-center gap-2.5'><FaHeart /> <span className='text-black'>{ likeCount}</span></p>
+                                <p className='text-[#005A52] flex items-center gap-2.5'><FaHeart /> <span className='text-black'>{ recipe.like_count}</span></p>
                             </div>
-                            <div>
+                            {/* <div>
                                 <button onClick={handleLikeButton} className='btn w-full text-[#005A52] hover:bg-[#005A52] hover:text-white flex items-center justify-center gap-2'>Like <FaHeart /></button>
-                            </div>
-                        
+                            </div> */}
+                        </div>
+                         
+                                <div className='flex flex-col gap-4 ml-4'>
+                                <button onClick={handleLikeButton} className='btn bg-[#005A52] text-white text-xl w-fit'><FaHeart /></button>
+                                <button onClick={()=>handleEditButton(recipe._id)}  className='btn bg-[#3C393B] text-white text-xl w-fit'><MdEdit /></button>
+                                <button onClick={()=>handleDeleteButton(recipe._id)} className='btn bg-[#bbad34] text-white text-xl w-fit'><MdDelete /></button>
+                                </div>
                         </div>
                 </div>
             </div>
+                })
+            }
         </div>
     );
 };
 
-export default RecipeDetails;
+export default MyRecipes;
