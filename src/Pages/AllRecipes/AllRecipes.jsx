@@ -1,22 +1,55 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaHeart } from 'react-icons/fa';
 import { useLoaderData, useNavigate } from 'react-router';
 
 const AllRecipes = () => {
+    const initialRecipes = useLoaderData()
+    const [recipes, setRecipes] = useState([])
+    const [originalRecipes, setOriginalRecipes] = useState([])
     useEffect(() => {
-             window.scrollTo(0, 0)        
-         }, [])
-    const recipes = useLoaderData()
+        window.scrollTo(0, 0) 
+        setRecipes(initialRecipes)
+        setOriginalRecipes(initialRecipes)
+         }, [initialRecipes])
     const navigate = useNavigate()
     console.log(recipes);
 
     const handleRecipeDetailsBtn = (id) => {
         navigate(`/RecipeDetails/${id}`)
     }
+
+    const handleRecipeCategories = (e) => {
+        // e.preventDefault()
+        const categories = e.target.value
+        // console.log(categories);
+        if (categories === 'All') {
+            setRecipes(originalRecipes)
+        }
+        else {
+            const cat = originalRecipes.filter(recipe => recipe.cuisine === categories);
+            setRecipes(cat)
+            console.log(cat);
+            
+        }
+        
+    }
+
+
     return (
         <div className='pb-32 pt-16'>
             <div className='text-center py-10'>
                 <h1 className='text-5xl font-bold fontRokkitt'>All Recipes</h1>
+            </div>
+            <div className='w-11/12 mx-auto mb-10'>
+                <select onChange={handleRecipeCategories} defaultValue="Pick a color" className="select">
+                    <option disabled>Cuisine Type</option>
+                    <option>All</option>
+                    <option>American</option>
+                    <option>Mexican</option>
+                    <option>Italian</option>
+                    <option>Chinese</option>
+                    <option>Indian</option>
+                </select>
             </div>
             <div className=' w-11/12 mx-auto grid grid-cols-4 gap-4'>
             {
