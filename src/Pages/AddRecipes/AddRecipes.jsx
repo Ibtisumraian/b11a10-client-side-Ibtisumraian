@@ -14,7 +14,7 @@ const AddRecipes = () => {
         recipeData.like_count= parseInt(recipeData.like_count)
         const userRecipe = { ...recipeData, userEmail }
         console.log(userRecipe);
-        fetch('http://localhost:5000/recipes', {
+        fetch('https://recipe-book-server-six.vercel.app/', {
             method: "POST",
             headers: {
                 "content-type": "application/json"
@@ -97,7 +97,7 @@ const AddRecipes = () => {
                         </div>
                         <div>
                             <p className='text-base font-semibold py-2'>Like Count</p>
-                            <input name='like_count' type="number" defaultValue={0} placeholder="" className="input w-[350px]" />
+                            <input name='like_count' type="number" value={0} placeholder="" className="input w-[350px]" />
                         </div>
                         
                         <div>
