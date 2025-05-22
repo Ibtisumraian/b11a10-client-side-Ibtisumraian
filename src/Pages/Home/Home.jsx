@@ -1,10 +1,12 @@
-import React, { useEffect } from 'react';
+import React, { use, useEffect } from 'react';
 import Banner from '../../components/Banner/Banner';
 import TopRecipes from '../../components/TopRecipes/TopRecipes';
 import { useLoaderData } from 'react-router';
+import { AuthContext } from '../../components/AuthContext/AuthContext';
 
 const Home = () => {
     // const [topRecipes, setTopRecipes] = useState()
+    const { theme } = use(AuthContext)
     const topRecipes = useLoaderData()
     console.log(topRecipes);
     
@@ -25,7 +27,7 @@ const Home = () => {
     
 
     return (
-        <div>
+        <div className={` ${theme == "dark" && "bg-[#0f1b28]"}`}>
             <div>
                 <Banner></Banner>
             </div>
@@ -40,19 +42,19 @@ const Home = () => {
                     <div>
                         <img className='rounded-tl-2xl rounded-bl-2xl' src="https://res.cloudinary.com/dd4np04jl/image/upload/v1747684954/RTM-48129-scaled_ljhc7o.webp" alt="" />
                     </div>
-                    <div className='bg-[#D0E5E0] flex flex-col justify-center items-center gap-4  rounded-tr-2xl rounded-br-2xl'>
+                    <div className={` flex flex-col justify-center items-center gap-4 rounded-tr-2xl rounded-br-2xl ${ theme == "dark" ? "bg-gray-800 text-[#56c9c1]" : "bg-[#D0E5E0] text-white"}`}>
                         <h1 className='text-3xl font-bold fontRokkitt '>We Have A Food Bank</h1>
                         <p className='text-xl'>We donate 600 homemade meals every single day to the vulnerable.</p>
-                        <button className='btn'>Learn More</button>
+                        <button className={`btn w-fit ${theme === "dark" && "border border-[#56c9c1] text-[#56c9c1]"}`}>Learn More</button>
                     </div>
                 </div>
             </div>
-            <div className='bg-[#D3D3D3] py-24 mb-32'>
+            <div className={`py-24 mb-32 ${theme == "dark" ? "bg-gray-800 text-[#56c9c1]" : "bg-[#D3D3D3]"}`}>
                 <div className='w-9/12 mx-auto grid grid-cols-2 gap-6 '>
                     <div className='flex flex-col justify-center gap-9'>
                         <h1 className='text-5xl font-bold fontRokkitt'>The Recipe Books Team</h1>
                         <p>Recipe Book is your go-to destination for delicious, easy-to-follow recipes created with home cooks in mind. With a growing collection of over 3,000 handpicked dishes, cooking tips, and meal ideas, we help food lovers around the world explore and enjoy home cooking every day. Our team of passionate food enthusiasts—including chefs, writers, testers, and photographers—work together to bring you trusted, flavorful recipes that you can count on.</p>
-                        <button className='btn w-fit'>Learn More</button>
+                        <button className={`btn w-fit ${theme === "dark" && "border border-[#56c9c1] text-[#56c9c1]"}`}>Learn More</button>
                     </div>
                     <div className='grid grid-cols-4 gap-6 p-6 rounded-2xl bg-[url(https://res.cloudinary.com/dd4np04jl/image/upload/v1747329942/13_cvgu8u.jpg)]'>
                         <div className=' flex flex-col justify-center items-center'>

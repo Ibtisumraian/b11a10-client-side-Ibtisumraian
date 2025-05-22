@@ -8,7 +8,7 @@ const RecipeDetails = () => {
     useEffect(() => {
              window.scrollTo(0, 0)        
          }, [])
-    const { user } = use(AuthContext)
+    const { user, theme } = use(AuthContext)
     const [likeCount, setLikeCount] = useState("")
     const recipe = useLoaderData()
     const like = parseInt(recipe.like_count)
@@ -44,10 +44,10 @@ const RecipeDetails = () => {
     }
     console.log(likeCount);
     return (
-        <div className='bg-[#F6F4F1]'>
+        <div className={`${theme === "dark" ? "bg-[#0f1b28]" : "bg-[#F6F4F1]"}`}>
             <div className='text-center py-5'>
                 <h1 className='text-5xl font-bold fontRokkitt'>
-                    <span className='text-[#005A52]'>
+                    <span className={`${theme === "dark" ? "text-white" : "text-[#005A52]"}`}>
                     <Typewriter
                         words={[`${likeCount} people interested in this recipe`]}
                         loop={Infinity} 
@@ -68,17 +68,17 @@ const RecipeDetails = () => {
                     <div>
                         
                         <div className='flex flex-col gap-8 max-w-[350px]'>
-                        <div className='bg-white p-8 rounded-xl'>
+                        <div className={` p-8 rounded-xl ${theme === "dark" ? "bg-gray-800" : "bg-white"}`}>
                             <h1 className=' text-lg font-bold'>Ingredients</h1>
                             <p>{recipe.ingredients}</p>
                         </div>
-                        <div className='bg-white p-8 rounded-xl'>
+                        <div className={` p-8 rounded-xl ${theme === "dark" ? "bg-gray-800" : "bg-white"}`}>
                             <h1 className=' text-lg font-bold'>Instructions</h1>
                             <p>{recipe.instructions}</p>
                         </div>
                     </div>
                     </div>
-                        <div className='bg-white py-4 px-8 rounded-xl flex flex-col gap-3'>
+                        <div className={` py-4 px-8 rounded-xl flex flex-col gap-3 ${theme === "dark" ? "bg-gray-800" : "bg-white"}`}>
                             <div>
                                 <h1 className=' text-lg font-bold'>Cuisine Type</h1>
                                 <p>{ recipe.cuisine}</p>
@@ -97,10 +97,10 @@ const RecipeDetails = () => {
                             </div>
                             <div>
                                 <h1 className=' text-lg font-bold'>Like Count</h1>
-                                <p className='text-[#005A52] flex items-center gap-2.5'><FaHeart /> <span className='text-black'>{ likeCount}</span></p>
+                                <p className='text-[#005A52] flex items-center gap-2.5'><FaHeart /> <span className=''>{ likeCount}</span></p>
                             </div>
                             <div>
-                                <button onClick={handleLikeButton} className='btn w-full text-[#005A52] hover:bg-[#005A52] hover:text-white flex items-center justify-center gap-2'>Like <FaHeart /></button>
+                                <button onClick={handleLikeButton} className={`btn w-full  hover:bg-[#005A52] hover:text-white flex items-center justify-center gap-2 ${theme === "dark" ? "border border-[#56c9c1] text-[#56c9c1]" : "text-[#005A52]"}`}>Like <FaHeart /></button>
                             </div>
                         
                         </div>

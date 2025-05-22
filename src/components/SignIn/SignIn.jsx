@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../AuthContext/AuthContext';
 
 const SignIn = () => {
-    const { userSignInWithEmailPass, userSignInWithGoogle } = use(AuthContext)
+    const { userSignInWithEmailPass, userSignInWithGoogle, theme } = use(AuthContext)
     const navigate = useNavigate()
     const location = useLocation()
 
@@ -34,15 +34,15 @@ const SignIn = () => {
         })
     }
     return (
-        <div className='sm:p-4 flex justify-center items-center bg-gradient-to-t from-[#D0E5E0] to-white'>
+        <div className={`sm:p-4 flex justify-center items-center  ${theme === "dark" ? "bg-gradient-to-t from-[#0f1b28] to-white " : "bg-gradient-to-t from-[#D0E5E0] to-white"}`}>
 
-        <div className='sm:p-4 px-5 sm:px-18 py-4 mt-8  flex justify-center items-center bg-white shadow-2xl rounded-2xl ' >
+        <div className={`sm:p-4 px-5 sm:px-18 py-4 mt-8  flex justify-center items-center  shadow-2xl rounded-2xl ${theme === "dark" ? "bg-[#0f1b28]" : "bg-white"}`} >
             {/* <div className='hidden lg:block' >
                 <img className='w-[700px]' src="https://i.ibb.co.com/LXhwc5zt/sign-in.png" alt="Imdbb server down" />
             </div> */}
-            <div className="flex flex-col justify-center items-center w-fit  p-8 bg-[#D0E5E0] rounded-2xl sm:my-22">
+            <div className={`flex flex-col justify-center items-center w-fit  p-8  rounded-2xl sm:my-22 ${theme === "dark" ? "bg-gray-800" : "bg-[#D0E5E0]"}`}>
                 <div>
-                    <p className='text-lg sm:text-xl font-semibold text-[#1C2B4A]'>User Sign In</p>
+                    <p className='text-lg sm:text-xl font-semibold '>User Sign In</p>
                 </div>
               <form onSubmit={handleFormSubmitBtn}>
               {/* email fild */}

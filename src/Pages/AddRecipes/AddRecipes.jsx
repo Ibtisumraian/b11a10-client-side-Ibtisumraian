@@ -2,7 +2,7 @@ import React, { use } from 'react';
 import { AuthContext } from '../../components/AuthContext/AuthContext';
 
 const AddRecipes = () => {
-    const { user } = use(AuthContext);
+    const { user, theme } = use(AuthContext);
     const handleAddRecipe = (e) => {
         e.preventDefault()
         const userEmail = user.email
@@ -29,7 +29,7 @@ const AddRecipes = () => {
     }
     return (
         <div>
-            <div className='w-4/12 mx-auto rounded-2xl my-24 py-12 bg-[#D0E5E0]'>
+            <div className={`w-4/12 mx-auto rounded-2xl my-24 py-12  ${theme === "dark" ? "bg-gray-800" : "bg-[#D0E5E0]"}`}>
                 <div className='text-center py-8'>
                     <h1 className='text-5xl fontRokkitt font-semibold text-white'>Add Recipes</h1>
                 </div>

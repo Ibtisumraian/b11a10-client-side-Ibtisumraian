@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { use } from 'react';
 import { FaPhoneAlt } from 'react-icons/fa';
 import { FaLocationDot } from 'react-icons/fa6';
 import { MdEmail } from 'react-icons/md';
+import { AuthContext } from '../AuthContext/AuthContext';
 
 const Footer = () => {
+  const { theme } = use(AuthContext)
     return (
-        <div className='bg-[#005A52]'>
+        <div className={`${theme === "dark" ? "bg-gray-800" : "bg-[#005A52]"}`}>
             <footer className="footer sm:footer-horizontal  text-neutral-content p-10">
   <aside>
     <div className='flex justify-between items-center'>

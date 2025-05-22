@@ -6,7 +6,7 @@ import Swal from 'sweetalert2';
 // import { useNavigate } from 'react-router';
 
 const MyRecipes = () => {
-    const { user } = use(AuthContext)
+    const { user, theme } = use(AuthContext)
     const [recipes, setRecipe] = useState([])
     const [modal, setModal] = useState(false)
     const [modalData, setModalData] = useState([])
@@ -103,13 +103,13 @@ const MyRecipes = () => {
         });
     }
     return (
-        <div className='bg-[#F6F4F1]'>
+        <div className={` ${theme === "dark" ? "bg-[#0f1b28]" : "bg-[#F6F4F1]"}`}>
             <div className='text-center py-12'>
                 <h1 className='text-5xl font-bold fontRokkitt'>My Recipes</h1>
             </div>
             {
                 recipes.map(recipe => {
-                    return <div className='w-8/12 mx-auto 2xl:flex 2xl:justify-between  pb-24'>
+                    return <div key={recipe._id} className='w-8/12 mx-auto 2xl:flex 2xl:justify-between  pb-24'>
                 <div>
                     <img className='w-[500px] h-[400px] rounded-xl' src={recipe.photo} alt="" />
                 </div>
@@ -117,18 +117,18 @@ const MyRecipes = () => {
                     <div>
                         
                         <div className='flex flex-col gap-8 max-w-[350px]'>
-                        <div className='bg-white p-8 rounded-xl'>
+                        <div className={` p-8 rounded-xl ${theme === "dark" ? "bg-gray-800" : "bg-white"}`}>
                             <h1 className=' text-lg font-bold'>Ingredients</h1>
                             <p>{recipe.ingredients}</p>
                         </div>
-                        <div className='bg-white p-8 rounded-xl'>
+                        <div className={` p-8 rounded-xl ${theme === "dark" ? "bg-gray-800" : "bg-white"}`}>
                             <h1 className=' text-lg font-bold'>Instructions</h1>
                             <p>{recipe.instructions}</p>
                         </div>
                     </div>
                     </div>
                         <div className='flex items-center'>
-                            <div className='bg-white py-4 px-8 rounded-xl flex flex-col gap-3'>
+                            <div className={` py-4 px-8 rounded-xl flex flex-col gap-3 ${theme === "dark" ? "bg-gray-800" : "bg-white"}`}>
                             <div>
                                 <h1 className=' text-lg font-bold'>Cuisine Type</h1>
                                 <p>{ recipe.cuisine}</p>
@@ -147,7 +147,7 @@ const MyRecipes = () => {
                             </div>
                             <div>
                                 <h1 className=' text-lg font-bold'>Like Count</h1>
-                                <p className='text-[#005A52] flex items-center gap-2.5'><FaHeart /> <span className='text-black'>{ recipe.like_count}</span></p>
+                                <p className='text-[#005A52] flex items-center gap-2.5'><FaHeart /> <span className=''>{ recipe.like_count}</span></p>
                             </div>
                             {/* <div>
                                 <button onClick={handleLikeButton} className='btn w-full text-[#005A52] hover:bg-[#005A52] hover:text-white flex items-center justify-center gap-2'>Like <FaHeart /></button>
@@ -172,7 +172,7 @@ const MyRecipes = () => {
            
            
            <div>
-            <div className='w-fit max-h-[90vh] overflow-y-auto mx-auto rounded-2xl my-12 p-12 bg-[#D0E5E0]'>
+            <div className={`w-fit max-h-[90vh] overflow-y-auto mx-auto rounded-2xl my-12 p-12 ${theme === "dark" ? "bg-gray-800" : "bg-[#D0E5E0]"}`}>
                 <div className='text-center py-8'>
                     <h1 className='text-5xl fontRokkitt font-semibold text-white'>Update Recipes</h1>
                 </div>

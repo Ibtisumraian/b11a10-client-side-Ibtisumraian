@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { use, useEffect, useState } from 'react';
 import { FaHeart } from 'react-icons/fa';
 import { useLoaderData, useNavigate } from 'react-router';
+import { AuthContext } from '../../components/AuthContext/AuthContext';
 
 const AllRecipes = () => {
+    const { theme } = use(AuthContext)
     const initialRecipes = useLoaderData()
     const [recipes, setRecipes] = useState([])
     const [originalRecipes, setOriginalRecipes] = useState([])
@@ -54,7 +56,7 @@ const AllRecipes = () => {
             <div className=' w-11/12 mx-auto grid grid-cols-4 gap-4'>
             {
                 recipes.map(recipe => {
-                    return <div key={recipe._id} className="card bg-base-100  shadow-sm">
+                    return <div key={recipe._id} className={`card bg-base-100  shadow-sm ${theme === "dark" ? "bg-gray-800" : "bg-base-100" }`}>
                             <figure className="px-10 pt-10">
                                 <img
                                 src={recipe.photo}
@@ -64,9 +66,9 @@ const AllRecipes = () => {
                             <div className="card-body items-center text-center">
                             <h2 className="card-title">{ recipe.title}</h2>
                             <p>{recipe.cuisine}</p>
-                            <p className='text-[#005A52] flex items-center gap-2.5'><FaHeart /> <span className='text-black'>{ recipe.like_count}</span></p>
+                            <p className='text-[#005A52] flex items-center gap-2.5'><FaHeart /> <span className=''>{ recipe.like_count}</span></p>
                                 <div className="card-actions">
-                                <button onClick={()=>handleRecipeDetailsBtn(recipe._id)} className="btn bg-[#005A52] text-white">See Details</button>
+                                <button onClick={()=>handleRecipeDetailsBtn(recipe._id)} className={`btn   ${theme === "dark" ? "border border-[#56c9c1] text-[#56c9c1]" : "bg-[#005A52] text-white"}`}>See Details</button>
                                 </div>
                             </div>
                             </div>
