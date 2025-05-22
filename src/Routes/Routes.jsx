@@ -8,6 +8,7 @@ import PrivateRoute from "../components/PrivateRoute/PrivateRoute";
 import AllRecipes from "../Pages/AllRecipes/Allrecipes";
 import RecipeDetails from "../components/RecipeDetails/RecipeDetails";
 import MyRecipes from "../components/MyRecipes/MyRecipes";
+import PageNotFound from "../components/PageNotFound/PageNotFound";
 
 export const router = createBrowserRouter([
   {
@@ -50,4 +51,8 @@ export const router = createBrowserRouter([
         }
     ]
   },
+  {
+    path: "*",
+    Component: PageNotFound
+  }
 ]);
