@@ -3,6 +3,7 @@ import { FaHeart } from 'react-icons/fa';
 import { useLoaderData } from 'react-router';
 import { AuthContext } from '../AuthContext/AuthContext';
 import { Typewriter } from 'react-simple-typewriter'
+import Swal from 'sweetalert2';
 
 const RecipeDetails = () => {
     useEffect(() => {
@@ -19,7 +20,10 @@ const RecipeDetails = () => {
     const handleLikeButton = () => {
         const email = recipe.userEmail
         if (user.email === email) {
-            return alert('You Can Not Like Your Own Recipe')
+            return Swal.fire({
+                icon: "error",
+                title: "You Can Not Like Your Own Recipe!",
+            });
         }
         // const newLike = likeCount + 1
         setLikeCount(likeCount + 1)

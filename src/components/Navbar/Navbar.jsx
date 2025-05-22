@@ -4,13 +4,24 @@ import { AuthContext } from '../AuthContext/AuthContext';
 import { signOut } from 'firebase/auth';
 import { auth } from '../firebase/firebase.init';
 import './nav.css'
+import { Bounce, toast } from 'react-toastify';
 const Navbar = () => {
   const { user, theme, setTheme } = use(AuthContext)
 // setTheme
   const handleSignOut = () => {
     signOut(auth)
     .then(()=>{
-      
+      toast.success('Sign Out Successful!', {
+          position: "top-left",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: false,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+          transition: Bounce,
+      });
     })
       .catch((error => {
       console.log(error);
@@ -23,7 +34,9 @@ const Navbar = () => {
     const theme = isDark ? 'dark' : 'light';
     document.documentElement.setAttribute('data-theme', theme);
       localStorage.setItem('theme', theme);
-      setTheme(theme)
+      const th = localStorage.getItem("theme")
+      console.log(th);
+      setTheme(th)
   };
 console.log(theme);
 

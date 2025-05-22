@@ -1,5 +1,6 @@
 import React, { use } from 'react';
 import { AuthContext } from '../../components/AuthContext/AuthContext';
+import Swal from 'sweetalert2';
 
 const AddRecipes = () => {
     const { user, theme } = use(AuthContext);
@@ -24,6 +25,12 @@ const AddRecipes = () => {
         .then(res=>res.json())
         .then(data=>{
             console.log(data);
+            if (data.insertedId) {
+                Swal.fire({
+                    title: "Recipe Added Successfully!",
+                    icon: "success"
+                });
+            }
             e.target.reset()
         })
     }
@@ -38,29 +45,29 @@ const AddRecipes = () => {
                         <div>
                             <div >
                             <p className='text-base font-semibold py-2'>Title</p>
-                            <input name='title' type="text" placeholder="Title" className="input w-[350px]" />
+                            <input required name='title' type="text" placeholder="Title" className="input w-[350px]" />
                         </div>                      
                         <div>
                             <p className='text-base font-semibold py-2'>URL</p>
-                            <input name='photo' type="url" placeholder="https://" className="input w-[350px]"  title="Must be valid URL" />
+                            <input required name='photo' type="url" placeholder="https://" className="input w-[350px]"  title="Must be valid URL" />
                         </div> 
                         </div>  
                         
                             <div>
                                 <div>
                                 <p className='text-base font-semibold py-2'>Ingredients</p>
-                                <textarea name='ingredients' className="textarea w-[350px]" placeholder="Ingredients"></textarea>
+                                <textarea required name='ingredients' className="textarea w-[350px]" placeholder="Ingredients"></textarea>
                             </div>
                             <div>
                                 <p className='text-base font-semibold py-2'>Instructions</p>
-                                <textarea name='instructions' className="textarea w-[350px]" placeholder="Instructions"></textarea>
+                                <textarea required name='instructions' className="textarea w-[350px]" placeholder="Instructions"></textarea>
                             </div>
                             </div>
                             
                         <div className='w-[350px] flex gap-3'>
                             <div>
                             <p className='text-base font-semibold py-2'>Cuisine</p>
-                            <select name='cuisine' defaultValue="Select type" className="select w-[170px]">
+                            <select required name='cuisine' defaultValue="Select type" className="select w-[170px]">
                                 <option disabled={true}>Select type</option>
                                 <option>American</option>
                                 <option>Italian</option>
@@ -72,14 +79,14 @@ const AddRecipes = () => {
                         
                         <div>
                             <p className='text-base font-semibold py-2'>Preparation Time</p>
-                            <input name='preparation_time' type="number" placeholder="Preparation time" className="input w-[170px]" />
+                            <input required name='preparation_time' type="number" placeholder="Preparation time" className="input w-[170px]" />
                         </div>
                         </div>
                         <div>
                             <p className='text-base font-semibold py-2'>Categories </p>
                             <div className='flex flex-wrap gap-6 w-[350px]'>
                                 <div className='flex items-center gap-2'>
-                                    <input name='categories' type="checkbox" defaultValue='Breakfast'  className="checkbox" />Breakfast
+                                    <input  name='categories' type="checkbox" defaultValue='Breakfast'  className="checkbox" />Breakfast
                                 </div>
                                 <div className='flex items-center gap-2'>
                                  <input name='categories' type="checkbox" defaultValue='Lunch' className="checkbox" />Lunch     
@@ -97,7 +104,7 @@ const AddRecipes = () => {
                         </div>
                         <div>
                             <p className='text-base font-semibold py-2'>Like Count</p>
-                            <input name='like_count' type="number" value={0} placeholder="" className="input w-[350px]" />
+                            <input required name='like_count' type="number" value={0} placeholder="" className="input w-[350px]" />
                         </div>
                         
                         <div>

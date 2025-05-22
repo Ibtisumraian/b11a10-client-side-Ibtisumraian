@@ -24,7 +24,10 @@ const MyRecipes = () => {
     },[user])
     
     const handleLikeButton = () => {
-        alert("You Can Not Like Your Own Recipe")
+        Swal.fire({
+                        icon: "error",
+                        title: "You Can Not Like Your Own Recipe!",
+                    });
     }
     const handleEditButton = (id) => {
         console.log(id)
@@ -58,6 +61,15 @@ const MyRecipes = () => {
         .then(res=>res.json())
         .then(data=>{
             console.log("data after update", data);
+            if (data.modifiedCount) {
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Recipe Updated Successfully!",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            }
             fetch(`https://recipe-book-server-six.vercel.app/user/${user.email}`)
         .then(res=>res.json())
         .then(data=>{

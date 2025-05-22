@@ -2,6 +2,7 @@ import React, { use, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../AuthContext/AuthContext';
 import { updateProfile } from 'firebase/auth';
+import { Bounce, toast } from 'react-toastify';
 
 const SignUp = () => {
     useEffect(() => {
@@ -24,12 +25,23 @@ const SignUp = () => {
         const username = e.target.name.value
         const userPhoto = e.target.photo.value
         userSignUpWithEmailPass(email, password)
-        .then( async (result)=>{
+        .then(  (result)=>{
             console.log(result);
-            await updateProfile(result.user, {
+            updateProfile(result.user, {
             displayName: username,
             photoURL: userPhoto,
             });
+            toast.success('Sign Up Successful!', {
+                            position: "top-right",
+                            autoClose: 5000,
+                            hideProgressBar: false,
+                            closeOnClick: false,
+                            pauseOnHover: true,
+                            draggable: true,
+                            progress: undefined,
+                            theme: "colored",
+                            transition: Bounce,
+                        });
             navigate(location?.state || '/')
         })
         .catch(error=>{
@@ -43,6 +55,17 @@ const SignUp = () => {
         userSignInWithGoogle()
         .then(result=>{
             console.log(result);
+            toast.success('Signed In Successfully!', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+                transition: Bounce,
+            });
             navigate('/')
         })
         .catch(error => {
@@ -64,7 +87,7 @@ const SignUp = () => {
               
                   <div className="pb-5">
                       <p className="text-sm sm:text-base ">Name</p>
-              <input name="name" type="text" className="input sm:w-[320px]" placeholder="Name"  />
+              <input required name="name" type="text" className="input sm:w-[320px]" placeholder="Name"  />
              </div>
               
               {/* photo url */}
@@ -90,6 +113,7 @@ const SignUp = () => {
                           type="url"                         
                           placeholder="https://"         
                           title="Must be valid URL"
+                          required
                       />
                       </label>
                         <p className="validator-hint mb-2">Must be valid URL</p>   
@@ -113,7 +137,7 @@ const SignUp = () => {
                 <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
                 </g>
             </svg>
-            <input name='email' type="email" placeholder="mail@site.com"  />
+            <input required name='email' type="email" placeholder="mail@site.com"  />
             </label>
             <div className="validator-hint hidden">Enter valid email address</div>
         </div>
@@ -144,7 +168,7 @@ const SignUp = () => {
         <input
             name='password'
             type="password"
-            
+            required
             placeholder="Password"
             minLength="8"
             pattern="^(?=.*[a-z])(?=.*[A-Z]).{6,}$"
@@ -159,7 +183,7 @@ const SignUp = () => {
                   </div>  
               
               <div className="pt-8 ">
-                  <button className="btn   w-full">Register</button>
+                  <button className="btn   w-full">Sign Up</button>
               </div>
               </form>
               

@@ -1,6 +1,7 @@
 import React, { use } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../AuthContext/AuthContext';
+import { Bounce, toast } from 'react-toastify';
 
 const SignIn = () => {
     const { userSignInWithEmailPass, userSignInWithGoogle, theme } = use(AuthContext)
@@ -14,6 +15,17 @@ const SignIn = () => {
         userSignInWithEmailPass(email, password)
         .then(result=>{
             console.log(result);
+            toast.success('Signed In Successfully!', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+                transition: Bounce,
+            });
             navigate(location?.state || '/')
         })
         .catch(error=>{
@@ -26,6 +38,17 @@ const SignIn = () => {
         userSignInWithGoogle()
         .then(result=>{
             console.log(result);
+            toast.success('Signed In Successfully!', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+                transition: Bounce,
+            });
             navigate('/')
         })
         .catch(error => {
@@ -63,7 +86,7 @@ const SignIn = () => {
                 <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
                 </g>
             </svg>
-            <input name='email' type="email" placeholder="mail@site.com" />
+            <input required name='email' type="email" placeholder="mail@site.com" />
             </label>
            
         </div>
@@ -95,8 +118,8 @@ const SignIn = () => {
             name='password'
             type="password"
             placeholder="Password"
-            minLength="8"
-            
+            minLength="6"
+            required
         />
         </label>
         
