@@ -49,7 +49,7 @@ console.log(theme);
     </>
     return (
       <div className={` ${theme == "dark" ? "bg-gray-800" : "bg-[#005A52]"}`}>
-            <div className="navbar w-9/12 mx-auto  ">
+            <div className="navbar w-11/12 mx-auto  ">
                 <div className="navbar-start">
                   <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -57,7 +57,7 @@ console.log(theme);
                     </div>
                     <ul
                       tabIndex={0}
-                      className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+                      className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow flex flex-col gap-2">
                     {links}
                     </ul>
                   </div>
@@ -71,14 +71,14 @@ console.log(theme);
                   {links}
                   </ul>
                 </div>
-                <div className="navbar-end flex gap-3">
+                <div className="navbar-end flex items-center gap-3">
                   <label className="swap swap-rotate">
                     {/* this hidden checkbox controls the state onChange={handleThemeToggle}  */}
                     <input onChange={handleThemeToggle} type="checkbox" className="theme-controller" value="synthwave" />
 
                     {/* sun icon */}
                     <svg
-                      className="swap-off h-10 w-10 fill-current"
+                      className="swap-off h-4 w-4 md:h-7 md:w-7  fill-current"
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 24 24">
                       <path
@@ -87,7 +87,7 @@ console.log(theme);
 
                     {/* moon icon */}
                     <svg
-                      className="swap-on h-10 w-10 fill-current"
+                      className="swap-on h-4 w-4 md:h-7 md:w-7 fill-current"
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 24 24">
                       <path
@@ -114,8 +114,8 @@ console.log(theme);
                   </ul>
           </div> 
               </div> : <>
-                  <NavLink className="btn" to='/Signin'>Sign In</NavLink>
-                  <NavLink className="btn" to='/Signup'>Sign Up</NavLink>
+                  <NavLink className="btn btn-sm md:btn-md " to='/Signin'>Sign In</NavLink>
+                  <NavLink className="btn btn-sm md:btn-md " to='/Signup'>Sign Up</NavLink>
               </>
             }
     

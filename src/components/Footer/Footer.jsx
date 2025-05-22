@@ -11,12 +11,12 @@ const Footer = () => {
             <footer className="footer sm:footer-horizontal  text-neutral-content p-10">
   <aside>
     <div className='flex justify-between items-center'>
-        <img className='w-[100px]' src="https://res.cloudinary.com/dd4np04jl/image/upload/v1747668593/logo_fz0exp.png" alt="" />
-        <p className='text-5xl font-semibold fontRokkitt'>Recipe Book</p>
+        <img className='w-[70px] sm:w-[100px]' src="https://res.cloudinary.com/dd4np04jl/image/upload/v1747668593/logo_fz0exp.png" alt="" />
+        <p className='text-4xl sm:text-5xl font-semibold fontRokkitt'>Recipe Book</p>
     </div>
     <div>
         <div className='flex flex-col '>
-                 <h1 className='fontRokkitt py-8 text-5xl font-semibold'>Get in Touch</h1>
+                 <h1 className='fontRokkitt py-8 text-4xl sm:text-5xl font-semibold'>Get in Touch</h1>
             <div className='flex flex-col gap-4'>
                  <h1 className=' flex items-center gap-4'><FaPhoneAlt /><span>+88 01533 333 333</span></h1>
                  <h1 className=' flex items-center gap-4'><MdEmail /><span>info@gmail.com</span></h1>
@@ -66,7 +66,7 @@ const Footer = () => {
 </footer>
             <footer className="footer sm:footer-horizontal footer-center  p-4">
   <aside>
-    <p className='text-lg text-white'>Copyright © {new Date().getFullYear()} - All right reserved by ACME Industries Ltd</p>
+    <p className='text-md sm:text-lg text-white'>Copyright © {new Date().getFullYear()} - All right reserved by ACME Industries Ltd</p>
   </aside>
 </footer>
         </div>

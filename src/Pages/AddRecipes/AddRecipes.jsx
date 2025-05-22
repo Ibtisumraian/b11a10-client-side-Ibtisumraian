@@ -7,13 +7,14 @@ const AddRecipes = () => {
     const handleAddRecipe = (e) => {
         e.preventDefault()
         const userEmail = user.email
+        const userName = user.displayName
         const form = e.target
         const formData = new FormData(form)
         const categories = formData.getAll('categories')
         const recipeData = Object.fromEntries(formData.entries());
         recipeData.categories = categories
         recipeData.like_count= parseInt(recipeData.like_count)
-        const userRecipe = { ...recipeData, userEmail }
+        const userRecipe = { ...recipeData, userEmail, userName }
         console.log(userRecipe);
         fetch('https://recipe-book-server-six.vercel.app/recipes', {
             method: "POST",
