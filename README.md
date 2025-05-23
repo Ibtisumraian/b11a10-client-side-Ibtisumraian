@@ -1,12 +1,66 @@
-# React + Vite
+# 📖 Recipe Book — Assignment-10_Category_Apple
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A user-friendly Recipe Book App where users can explore, add, update, and manage recipes. Includes social login, protected routes, liking system, and a sleek responsive design for food lovers.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🔗 Live Website
 
-## Expanding the ESLint configuration
+[🌐 View Live Site](https://recipe-book-bff32.web.app/)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🌟 Key Features
+
+- 🔐 Firebase authentication with email/password and Google Sign-In
+- ➕ Add, edit, and delete your own recipes
+- ❤️ Liking own recipes is restricted
+- 🔥 Top Recipes section dynamically sorted by likes
+- 🎨 Responsive design for mobile, tablet, and desktop
+- 🔍 Filter recipes by cuisine type
+- 🌙 Light/Dark theme toggle
+- 🔒 Protected routes (My Recipes, Add Recipe, Recipe Details)
+- 🧁 Custom 404 page with a food-themed design
+- 🎉 Modern UI using Tailwind CSS and DaisyUI
+
+---
+
+## 🧪 Tech Stack
+
+- **Frontend:** React, React Router, Tailwind CSS, DaisyUI
+- **Backend:** Express.js, MongoDB
+- **Authentication:** Firebase
+- **Notifications:** SweetAlert2, React-Toastify
+- **Animation/UX:** React Simple Typewriter, React Awesome Reveal
+
+---
+
+## 🧰 NPM Packages Used
+
+These are packages required for the application to run:
+
+- **@tailwindcss/vite@^4.1.7** – TailwindCSS integration for Vite
+- **firebase@^11.7.3** – User authentication and backend integration
+- **react@^19.1.0** – Core React library
+- **react-dom@^19.1.0** – React DOM rendering
+- **react-awesome-reveal@^4.3.1** – Animation library for reveal effects
+- **react-icons@^5.5.0** – Icon library
+- **react-router@^7.6.0** – Routing library
+- **react-simple-typewriter@^5.0.1** – Typing effect component
+- **react-toastify@^11.0.5** – Toast notifications
+- **sweetalert2@^11.21.2** – Alert and confirmation popups
+- **tailwindcss@^4.1.7** – Utility-first CSS framework
+
+---
+
+## 🔐 Environment Variables
+
+---
+
+## 👤 Author
+
+**Ibtisum Raian**  
+Email: ibtisumraian@gmail.com  
+GitHub: [Ibtisumraian](https://github.com/Ibtisumraian)
+
+---
