@@ -60,7 +60,7 @@ const Home = () => {
                         <div className=' flex flex-col justify-center items-center'>
                             <div className="avatar">
                             <div className="mask mask-squircle w-13 sm:w-18 2xl:w-24">
-                                <img src="https://img.daisyui.com/images/profile/demo/distracted1@192.webp" />
+                                <img src="https://res.cloudinary.com/dd4np04jl/image/upload/v1748019377/1516924701389_kwvmqb.jpg" />
                             </div>
                             </div>
                             <h1 className='text-sm sm:text-base'>Owen Tan</h1>
@@ -70,7 +70,7 @@ const Home = () => {
                         <div className=' flex flex-col justify-center items-center'>
                             <div className="avatar">
                             <div className="mask mask-squircle w-13 sm:w-18 2xl:w-24">
-                                <img src="https://img.daisyui.com/images/profile/demo/distracted1@192.webp" />
+                                <img src="https://res.cloudinary.com/dd4np04jl/image/upload/v1748019483/1731624321659_zuq5jk.jpg" />
                             </div>
                             </div>
                             <h1 className='text-sm sm:text-base'>Mia Lim</h1>
@@ -80,7 +80,7 @@ const Home = () => {
                         <div className=' flex flex-col justify-center items-center'>
                             <div className="avatar">
                             <div className="mask mask-squircle w-13 sm:w-18 2xl:w-24">
-                                <img src="https://img.daisyui.com/images/profile/demo/distracted1@192.webp" />
+                                <img src="https://res.cloudinary.com/dd4np04jl/image/upload/v1748019621/1626110104148_iyo6hi.jpg" />
                             </div>
                             </div>
                             <h1 className='text-sm sm:text-base'>Noah Park</h1>
@@ -90,7 +90,7 @@ const Home = () => {
                         <div className=' flex flex-col justify-center items-center'>
                             <div className="avatar">
                             <div className="mask mask-squircle w-13 sm:w-18 2xl:w-24">
-                                <img src="https://img.daisyui.com/images/profile/demo/distracted1@192.webp" />
+                                <img src="https://res.cloudinary.com/dd4np04jl/image/upload/v1748019760/1737670000274_imayuv.jpg" />
                             </div>
                             </div>
                             <h1 className='text-sm sm:text-base'>Lily Tran</h1>
@@ -100,7 +100,7 @@ const Home = () => {
                         <div className=' flex flex-col justify-center items-center'>
                             <div className="avatar">
                             <div className="mask mask-squircle w-13 sm:w-18 2xl:w-24">
-                                <img src="https://img.daisyui.com/images/profile/demo/distracted1@192.webp" />
+                                <img src="https://res.cloudinary.com/dd4np04jl/image/upload/v1748019889/people-2402-1H6A2446gaffney-20210923170531_sy6y6n.jpg" />
                             </div>
                             </div>
                             <h1 className='text-sm sm:text-base'>Ryan Vu</h1>
@@ -110,7 +110,7 @@ const Home = () => {
                         <div className=' flex flex-col justify-center items-center'>
                             <div className="avatar">
                             <div className="mask mask-squircle w-13 sm:w-18 2xl:w-24">
-                                <img src="https://img.daisyui.com/images/profile/demo/distracted1@192.webp" />
+                                <img src="https://res.cloudinary.com/dd4np04jl/image/upload/v1748020271/istockphoto-517234226-612x612_vpugax.jpg" />
                             </div>
                             </div>
                             <h1 className='text-sm sm:text-base text-center'>Emma Dao</h1>
@@ -120,7 +120,7 @@ const Home = () => {
                         <div className=' flex flex-col justify-center items-center'>
                             <div className="avatar">
                             <div className="mask mask-squircle w-13 sm:w-18 2xl:w-24">
-                                <img src="https://img.daisyui.com/images/profile/demo/distracted1@192.webp" />
+                                <img src="https://res.cloudinary.com/dd4np04jl/image/upload/v1748020486/images_dcbx12.jpg" />
                             </div>
                             </div>
                             <h1 className='text-sm sm:text-base'>Jack Cho</h1>
@@ -130,7 +130,7 @@ const Home = () => {
                         <div className=' flex flex-col justify-center items-center'>
                             <div className="avatar">
                             <div className="mask mask-squircle w-13 sm:w-18 2xl:w-24">
-                                <img src="https://img.daisyui.com/images/profile/demo/distracted1@192.webp" />
+                                <img src="https://res.cloudinary.com/dd4np04jl/image/upload/v1748020495/images_1_wwl883.jpg" />
                             </div>
                             </div>
                             <h1 className='text-sm sm:text-base'>Elena Max</h1>
