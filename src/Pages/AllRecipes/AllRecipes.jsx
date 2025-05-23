@@ -43,7 +43,7 @@ const AllRecipes = () => {
                 <h1 className='text-5xl font-bold fontRokkitt'>All Recipes</h1>
             </div>
             <div className='w-11/12 mx-auto mb-10'>
-                <select onChange={handleRecipeCategories} defaultValue="Pick a color" className="select">
+                <select onChange={handleRecipeCategories} defaultValue="Pick a color" className="select w-full sm:w-[320px]">
                     <option disabled>Cuisine Type</option>
                     <option>All</option>
                     <option>American</option>
@@ -53,11 +53,11 @@ const AllRecipes = () => {
                     <option>Indian</option>
                 </select>
             </div>
-            <div className=' w-11/12 mx-auto grid grid-cols-4 gap-4'>
+            <div className=' w-11/12 mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 2xl:grid-cols-4 gap-4'>
             {
                 recipes.map(recipe => {
                     return <div key={recipe._id} className={`card bg-base-100  shadow-sm ${theme === "dark" ? "bg-gray-800" : "bg-base-100" }`}>
-                            <figure className="px-10 pt-10">
+                            <figure className="px-4 lg:px-10 pt-10">
                                 <img
                                 src={recipe.photo}
                                 alt="Shoes"

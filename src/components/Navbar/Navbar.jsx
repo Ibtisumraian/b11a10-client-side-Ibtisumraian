@@ -101,7 +101,7 @@ console.log(theme);
               <div tabIndex={0} role="button" className=" m-1">
                 
                   <div className="avatar">
-                    <div className="w-16 rounded-full">
+                    <div className="w-9 md:w-16 rounded-full">
                       <img src={user.photoURL} />
                     </div>
                   </div>
