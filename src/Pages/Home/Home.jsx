@@ -44,7 +44,7 @@ const Home = () => {
                     </div>
                     <div className={` flex flex-col justify-center items-center text-center gap-4 p-8 rounded-bl-2xl lg:rounded-bl-none lg:rounded-tr-2xl rounded-br-2xl ${ theme == "dark" ? "bg-gray-800 text-[#56c9c1]" : "bg-[#D0E5E0] text-white"}`}>
                         <h1 className='text-xl sm:text-3xl font-bold fontRokkitt '>We Have A Food Bank</h1>
-                        <p className='text-md sm:text-xl'>We donate 600 homemade meals every single day to the vulnerable.</p>
+                        <p className={`text-md sm:text-xl ${theme === "dark" && "text-white"}`}>We donate 600 homemade meals every single day to the vulnerable.</p>
                         <button className={`btn btn-sm sm:btn-md w-fit ${theme === "dark" && "border border-[#56c9c1] text-[#56c9c1]"}`}>Learn More</button>
                     </div>
                 </div>
@@ -53,7 +53,7 @@ const Home = () => {
                 <div className='w-9/12 mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6 '>
                     <div className='flex flex-col justify-center gap-9'>
                         <h1 className='text-3xl sm:text-5xl font-bold fontRokkitt text-center lg:text-left'>The Recipe Books Team</h1>
-                        <p className='text-sm sm:text-lg text-center lg:text-left'>Recipe Book is your go-to destination for delicious, easy-to-follow recipes created with home cooks in mind. With a growing collection of over 3,000 handpicked dishes, cooking tips, and meal ideas, we help food lovers around the world explore and enjoy home cooking every day. Our team of passionate food enthusiasts—including chefs, writers, testers, and photographers—work together to bring you trusted, flavorful recipes that you can count on.</p>
+                        <p className={`text-sm sm:text-lg text-center lg:text-left ${theme === "dark" && "text-white"}`}>Recipe Book is your go-to destination for delicious, easy-to-follow recipes created with home cooks in mind. With a growing collection of over 3,000 handpicked dishes, cooking tips, and meal ideas, we help food lovers around the world explore and enjoy home cooking every day. Our team of passionate food enthusiasts—including chefs, writers, testers, and photographers—work together to bring you trusted, flavorful recipes that you can count on.</p>
                         <button className={`btn btn-sm sm:btn-md mx-auto lg:mx-0 w-fit ${theme === "dark" && "border border-[#56c9c1] text-[#56c9c1]"}`}>Learn More</button>
                     </div>
                     <div className='grid grid-cols-3 2xl:grid-cols-4 gap-3 lg:gap-0 p-3 2xl:p-6 rounded-2xl bg-[url(https://res.cloudinary.com/dd4np04jl/image/upload/v1747329942/13_cvgu8u.jpg)]'>
