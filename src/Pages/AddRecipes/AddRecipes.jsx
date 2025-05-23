@@ -37,38 +37,38 @@ const AddRecipes = () => {
     }
     return (
         <div>
-            <div className={`w-4/12 mx-auto rounded-2xl my-24 py-12  ${theme === "dark" ? "bg-gray-800" : "bg-[#D0E5E0]"}`}>
+            <div className={`w-fit mx-auto rounded-2xl my-24 p-6 sm:p-12  ${theme === "dark" ? "bg-gray-800" : "bg-[#D0E5E0]"}`}>
                 <div className='text-center py-8'>
-                    <h1 className='text-5xl fontRokkitt font-semibold text-white'>Add Recipes</h1>
+                    <h1 className='text-4xl sm:text-5xl fontRokkitt font-semibold text-white'>Add Recipes</h1>
                 </div>
                 <form onSubmit={handleAddRecipe} >
                     <div className=' flex flex-col justify-center items-center'>                        
                         <div>
                             <div >
-                            <p className='text-base font-semibold py-2'>Title</p>
-                            <input required name='title' type="text" placeholder="Title" className="input w-[350px]" />
+                            <p className='text-sm sm:text-base font-semibold py-2'>Title</p>
+                            <input required name='title' type="text" placeholder="Title" className="input w-full" />
                         </div>                      
                         <div>
-                            <p className='text-base font-semibold py-2'>URL</p>
-                            <input required name='photo' type="url" placeholder="https://" className="input w-[350px]"  title="Must be valid URL" />
+                            <p className='text-sm sm:text-base font-semibold py-2'>URL</p>
+                            <input required name='photo' type="url" placeholder="https://" className="input w-[250px] sm:w-[350px]"  title="Must be valid URL" />
                         </div> 
                         </div>  
                         
                             <div>
                                 <div>
-                                <p className='text-base font-semibold py-2'>Ingredients</p>
-                                <textarea required name='ingredients' className="textarea w-[350px]" placeholder="Ingredients"></textarea>
+                                <p className='text-sm sm:text-base font-semibold py-2'>Ingredients</p>
+                                <textarea required name='ingredients' className="textarea w-[250px] sm:w-[350px]" placeholder="Ingredients"></textarea>
                             </div>
                             <div>
-                                <p className='text-base font-semibold py-2'>Instructions</p>
-                                <textarea required name='instructions' className="textarea w-[350px]" placeholder="Instructions"></textarea>
+                                <p className='text-sm sm:text-base font-semibold py-2'>Instructions</p>
+                                <textarea required name='instructions' className="textarea w-[250px] sm:w-[350px]" placeholder="Instructions"></textarea>
                             </div>
                             </div>
                             
-                        <div className='w-[350px] flex gap-3'>
+                        <div className='w-[250px] sm:w-[350px] flex gap-3'>
                             <div>
-                            <p className='text-base font-semibold py-2'>Cuisine</p>
-                            <select required name='cuisine' defaultValue="Select type" className="select w-[170px]">
+                            <p className='text-sm sm:text-base font-semibold py-2'>Cuisine</p>
+                            <select required name='cuisine' defaultValue="Select type" className="select w-[120px]">
                                 <option disabled={true}>Select type</option>
                                 <option>American</option>
                                 <option>Italian</option>
@@ -79,37 +79,37 @@ const AddRecipes = () => {
                         </div>
                         
                         <div>
-                            <p className='text-base font-semibold py-2'>Preparation Time</p>
-                            <input required name='preparation_time' type="number" placeholder="Preparation time" className="input w-[170px]" />
+                            <p className='text-sm sm:text-base font-semibold py-2'>Preparation Time</p>
+                            <input required name='preparation_time' type="number" placeholder="Preparation time" className="input w-[120px]" />
                         </div>
                         </div>
                         <div>
-                            <p className='text-base font-semibold py-2'>Categories </p>
-                            <div className='flex flex-wrap gap-6 w-[350px]'>
-                                <div className='flex items-center gap-2'>
+                            <p className='text-sm sm:text-base font-semibold py-2'>Categories </p>
+                            <div className='flex flex-wrap gap-6 w-[250px] sm:w-[350px]'>
+                                <div className='flex items-center gap-2 text-sm sm:text-base'>
                                     <input  name='categories' type="checkbox" defaultValue='Breakfast'  className="checkbox" />Breakfast
                                 </div>
-                                <div className='flex items-center gap-2'>
+                                <div className='flex items-center gap-2 text-sm sm:text-base'>
                                  <input name='categories' type="checkbox" defaultValue='Lunch' className="checkbox" />Lunch     
                                 </div>
-                                <div className='flex items-center gap-2'>
+                                <div className='flex items-center gap-2 text-sm sm:text-base'>
                                     <input name='categories' type="checkbox" defaultValue='Dinner' className="checkbox" />Dinner
                                 </div>
-                                <div className='flex items-center gap-2'>
+                                <div className='flex items-center gap-2 text-sm sm:text-base'>
                                     <input name='categories' type="checkbox" defaultValue='Dessert' className="checkbox" />Dessert
                                 </div>
-                                <div className='flex items-center gap-2'>
+                                <div className='flex items-center gap-2 text-sm sm:text-base'>
                                     <input name='categories' type="checkbox" defaultValue='Vegan' className="checkbox" />Vegan
                                 </div>
                             </div>
                         </div>
                         <div>
-                            <p className='text-base font-semibold py-2'>Like Count</p>
-                            <input required name='like_count' type="number" value={0} placeholder="" className="input w-[350px]" />
+                            <p className='text-sm sm:text-base font-semibold py-2'>Like Count</p>
+                            <input required name='like_count' type="number" value={0} placeholder="" className="input w-[250px] sm:w-[350px]" />
                         </div>
                         
                         <div>
-                            <button className='btn w-[350px] my-8'>Add Recipe</button>
+                            <button className='btn w-[250px] sm:w-[350px] my-8'>Add Recipe</button>
                         </div>
                     </div>                   
                 </form>              
