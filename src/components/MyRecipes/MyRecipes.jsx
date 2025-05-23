@@ -115,58 +115,59 @@ const MyRecipes = () => {
         });
     }
     return (
-        <div className={` ${theme === "dark" ? "bg-[#0f1b28]" : "bg-[#F6F4F1]"}`}>
-            <div className='text-center py-12'>
+        <div className={` flex flex-col gap-8 ${theme === "dark" ? "bg-[#0f1b28]" : "bg-[#F6F4F1]"}`}>
+            <div className='text-center pt-12'>
                 <h1 className='text-5xl font-bold fontRokkitt'>My Recipes</h1>
             </div>
             {
                 recipes.map(recipe => {
-                    return <div key={recipe._id} className='w-8/12 mx-auto 2xl:flex 2xl:justify-between  pb-24'>
-                <div>
-                    <img className='w-[500px] h-[400px] rounded-xl' src={recipe.photo} alt="" />
+                    return <div key={recipe._id}
+                className={`w-11/12 sm:w-9/12 mb-8 mx-auto 2xl:flex 2xl:justify-between  rounded-2xl p-6 sm:p-16 ${theme === "dark" ? "bg-gray-800" : "bg-[#D0E5E0]"}`}>
+                <div className='flex items-center justify-center mb-2'>
+                    <img className='w-full 2xl:w-[600px] h-[225px] sm:h-[400px] rounded-xl' src={recipe.photo} alt="" />
                 </div>
-                <div className='flex items-center gap-8 '>
+                <div className='2xl:flex justify-center items-center gap-8 '>
                     <div>
                         
-                        <div className='flex flex-col gap-8 max-w-[350px]'>
-                        <div className={` p-8 rounded-xl ${theme === "dark" ? "bg-gray-800" : "bg-white"}`}>
-                            <h1 className=' text-lg font-bold'>Ingredients</h1>
-                            <p>{recipe.ingredients}</p>
+                        <div className='flex flex-col gap-2 sm:gap-8 2xl:w-[350px] 2xl:ml-4'>
+                        <div className={` p-8 rounded-xl ${theme === "dark" ? "bg-[#0f1b28]" : "bg-white"}`}>
+                            <h1 className=' text-base sm:text-lg font-bold'>Ingredients</h1>
+                            <p className='text-sm sm:text-base'>{recipe.ingredients}</p>
                         </div>
-                        <div className={` p-8 rounded-xl ${theme === "dark" ? "bg-gray-800" : "bg-white"}`}>
-                            <h1 className=' text-lg font-bold'>Instructions</h1>
-                            <p>{recipe.instructions}</p>
+                        <div className={` p-8 rounded-xl ${theme === "dark" ? "bg-[#0f1b28]" : "bg-white"}`}>
+                            <h1 className=' text-base sm:text-lg font-bold'>Instructions</h1>
+                            <p className='text-sm sm:text-base'>{recipe.instructions}</p>
                         </div>
                     </div>
                     </div>
-                        <div className='flex items-center'>
-                            <div className={` py-4 px-8 rounded-xl flex flex-col gap-3 ${theme === "dark" ? "bg-gray-800" : "bg-white"}`}>
+                        <div className=' 2xl:flex items-center sm:gap-8 my-2 sm:my-8'>
+                            <div className={` py-4 px-8 rounded-xl flex justify-between flex-wrap 2xl:flex-col   gap-3 ${theme === "dark" ? "bg-[#0f1b28]" : "bg-white"}`}>
                             <div>
-                                <h1 className=' text-lg font-bold'>Cuisine Type</h1>
-                                <p>{ recipe.cuisine}</p>
+                                <h1 className=' text-sm sm:text-lg font-bold'>Cuisine Type</h1>
+                                <p className='text-sm sm:text-base'>{ recipe.cuisine}</p>
                             </div>
                             <div>
-                                <h1 className=' text-lg font-bold'>Preparation Time</h1>
-                                <p>{ recipe.preparation_time} minute</p>
+                                <h1 className=' text-sm sm:text-lg font-bold'>Preparation Time</h1>
+                                <p className='text-sm sm:text-base'>{ recipe.preparation_time} minute</p>
                             </div>
                             <div>
-                                <h1 className=' text-lg font-bold'>Categories</h1>
-                                <ul>
+                                <h1 className=' text-sm sm:text-lg font-bold'>Categories</h1>
+                                <ul className='text-sm sm:text-base'>
                                     {
                                         recipe.categories.map((cat, index) => <li key={index}>{ cat}</li>)
                                     }
                                 </ul>
                             </div>
                             <div>
-                                <h1 className=' text-lg font-bold'>Like Count</h1>
-                                <p className='text-[#005A52] flex items-center gap-2.5'><FaHeart /> <span className=''>{ recipe.like_count}</span></p>
+                                <h1 className=' text-sm sm:text-lg font-bold'>Like Count</h1>
+                                <p className='text-[#005A52] flex items-center  gap-2.5'><FaHeart /> <span className=''>{ recipe.like_count}</span></p>
                             </div>
                             {/* <div>
                                 <button onClick={handleLikeButton} className='btn w-full text-[#005A52] hover:bg-[#005A52] hover:text-white flex items-center justify-center gap-2'>Like <FaHeart /></button>
                             </div> */}
                         </div>
                          
-                                <div className='flex flex-col gap-4 ml-4'>
+                                <div className='flex justify-around 2xl:flex 2xl:flex-col gap-4 ml-4 mt-7'>
                                 <button onClick={handleLikeButton} className='btn bg-[#005A52] text-white text-xl w-fit'><FaHeart /></button>
                                 <button onClick={()=>handleEditButton(recipe._id)}  className='btn bg-[#3C393B] text-white text-xl w-fit'><MdEdit /></button>
                                 <button onClick={()=>handleDeleteButton(recipe._id)} className='btn bg-[#bbad34] text-white text-xl w-fit'><MdDelete /></button>
