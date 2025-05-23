@@ -68,7 +68,7 @@ const AddRecipes = () => {
                         <div className='w-[250px] sm:w-[350px] flex gap-3'>
                             <div>
                             <p className='text-sm sm:text-base font-semibold py-2'>Cuisine</p>
-                            <select required name='cuisine' defaultValue="Select type" className="select w-[120px]">
+                            <select required name='cuisine' defaultValue="Select type" className="select w-[120px] sm:w-[170px]">
                                 <option disabled={true}>Select type</option>
                                 <option>American</option>
                                 <option>Italian</option>
@@ -80,7 +80,7 @@ const AddRecipes = () => {
                         
                         <div>
                             <p className='text-sm sm:text-base font-semibold py-2'>Preparation Time</p>
-                            <input required name='preparation_time' type="number" placeholder="Preparation time" className="input w-[120px]" />
+                            <input required name='preparation_time' type="number" placeholder="Preparation time" className="input w-[120px] sm:w-[170px]" />
                         </div>
                         </div>
                         <div>

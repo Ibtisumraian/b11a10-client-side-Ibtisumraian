@@ -185,9 +185,9 @@ const MyRecipes = () => {
            
            
            <div>
-            <div className={`w-fit max-h-[90vh] overflow-y-auto mx-auto rounded-2xl my-12 p-12 ${theme === "dark" ? "bg-gray-800" : "bg-[#D0E5E0]"}`}>
+            <div className={`w-fit max-h-[90vh] overflow-y-auto mx-auto rounded-2xl my-12 p-6 sm:p-12 ${theme === "dark" ? "bg-gray-800" : "bg-[#D0E5E0]"}`}>
                 <div className='text-center py-8'>
-                    <h1 className='text-5xl fontRokkitt font-semibold text-white'>Update Recipes</h1>
+                    <h1 className='text-3xl sm:text-5xl fontRokkitt font-semibold text-white'>Update Recipes</h1>
                 </div>
                 <form onSubmit={handelEditFormSubmit} >
                     <div className=' flex flex-col justify-center items-center'>                        
@@ -195,32 +195,32 @@ const MyRecipes = () => {
                             <div>
                               <div>
                             <div >
-                            <p className='text-base font-semibold py-2'>Title</p>
-                            <input name='title' defaultValue={modalData.title} type="text" placeholder="Title" className="input w-[350px]" />
+                            <p className='text-sm sm:text-base font-semibold py-2'>Title</p>
+                            <input name='title' defaultValue={modalData.title} type="text" placeholder="Title" className="input w-[250px] sm:w-[350px]" />
                         </div>                      
                         <div>
-                            <p className='text-base font-semibold py-2'>URL</p>
-                            <input name='photo' defaultValue={modalData.photo} type="url" placeholder="https://" className="input w-[350px]"  title="Must be valid URL" />
+                            <p className='text-sm sm:text-base font-semibold py-2'>URL</p>
+                            <input name='photo' defaultValue={modalData.photo} type="url" placeholder="https://" className="input w-[250px] sm:w-[350px]"  title="Must be valid URL" />
                         </div> 
                         </div>  
                         
                             <div>
                                 <div>
-                                <p className='text-base font-semibold py-2'>Ingredients</p>
-                                <textarea name='ingredients' defaultValue={modalData.ingredients} className="textarea w-[350px]" placeholder="Ingredients"></textarea>
+                                <p className='text-sm sm:text-base font-semibold py-2'>Ingredients</p>
+                                <textarea name='ingredients' defaultValue={modalData.ingredients} className="textarea w-[250px] sm:w-[350px]" placeholder="Ingredients"></textarea>
                             </div>
                             <div>
-                                <p className='text-base font-semibold py-2'>Instructions</p>
-                                <textarea name='instructions' defaultValue={modalData.instructions} className="textarea w-[350px]" placeholder="Instructions"></textarea>
+                                <p className='text-sm sm:text-base font-semibold py-2'>Instructions</p>
+                                <textarea name='instructions' defaultValue={modalData.instructions} className="textarea w-[250px] sm:w-[350px]" placeholder="Instructions"></textarea>
                             </div>
                             </div>
                       </div>
                             
                         <div>
-                                <div className='w-[350px] flex gap-3'>
+                                <div className='w-[250px] sm:w-[350px] flex gap-3'>
                             <div>
-                            <p className='text-base font-semibold py-2'>Cuisine</p>
-                            <select name='cuisine' defaultValue={modalData.cuisine} className="select w-[170px]">
+                            <p className='text-sm sm:text-base font-semibold py-2'>Cuisine</p>
+                            <select name='cuisine' defaultValue={modalData.cuisine} className="select w-[120px] sm:w-[170px]">
                                 <option disabled={true}>{modalData.cuisine}</option>
                                 <option>American</option>
                                 <option>Italian</option>
@@ -231,13 +231,13 @@ const MyRecipes = () => {
                         </div>
                         
                         <div>
-                            <p className='text-base font-semibold py-2'>Preparation Time</p>
-                            <input name='preparation_time' defaultValue={modalData.preparation_time} type="number" placeholder="Preparation time" className="input w-[170px]" />
+                            <p className='text-sm sm:text-base font-semibold py-2'>Preparation Time</p>
+                            <input name='preparation_time' defaultValue={modalData.preparation_time} type="number" placeholder="Preparation time" className="input w-[120px] sm:w-[170px]" />
                         </div>
                         </div>
                         <div>
-                            <p className='text-base font-semibold py-2'>Categories </p>
-                            <div className='flex flex-wrap gap-6 w-[350px]'>
+                            <p className='text-sm sm:text-base font-semibold py-2'>Categories </p>
+                            <div className='flex flex-wrap gap-6 w-[250px] sm:w-[350px]'>
                                 <div className='flex items-center gap-2'>
                                     <input name='categories' type="checkbox" defaultChecked={modalData?.categories?.includes('Breakfast')} defaultValue='Breakfast'  className="checkbox" />Breakfast
                                 </div>
@@ -256,14 +256,14 @@ const MyRecipes = () => {
                             </div>
                         </div>
                         <div>
-                            <p className='text-base font-semibold py-2'>Like Count</p>
-                            <input name='like_count' type="number" value={modalData.like_count} placeholder="" className="input w-[350px]" />
+                            <p className='text-sm sm:text-base font-semibold py-2'>Like Count</p>
+                            <input name='like_count' type="number" value={modalData.like_count} placeholder="" className="input w-[250px] sm:w-[350px]" />
                         </div>
                         </div>
                       </div>
                         
                         <div>
-                            <button className='btn w-[350px] my-8'>Update Recipe</button>
+                            <button className='btn w-[250px] sm:w-[350px] my-8'>Update Recipe</button>
                         </div>
                     </div>                   
                 </form>              

@@ -48,7 +48,7 @@ const RecipeDetails = () => {
     }
     console.log(likeCount);
     return (
-        <div className={`${theme === "dark" ? "bg-[#0f1b28]" : "bg-[#F6F4F1]"}`}>
+        <div className={`pb-12 ${theme === "dark" ? "bg-[#0f1b28]" : "bg-[#F6F4F1]"}`}>
             <div className='text-center py-5'>
                 <h1 className='text-3xl h-[100px] sm:h-fit md:text-4xl lg:text-5xl p-6  font-bold fontRokkitt'>
                     <span className={`${theme === "dark" ? "text-white" : "text-[#005A52]"}`}>
@@ -64,7 +64,7 @@ const RecipeDetails = () => {
                     </span>
                 </h1>
                 </div>
-            <div className={`w-11/12 sm:w-9/12 mb-8 mx-auto 2xl:flex 2xl:justify-between  rounded-2xl p-6 sm:p-16 ${theme === "dark" ? "bg-gray-800" : "bg-[#D0E5E0]"}`}>
+            <div className={`w-11/12 sm:w-9/12  mx-auto 2xl:flex 2xl:justify-between  rounded-2xl p-6 sm:p-16 ${theme === "dark" ? "bg-gray-800" : "bg-[#D0E5E0]"}`}>
                 <div>
                     <img className='w-full 2xl:w-[600px] h-[225px] sm:h-[400px] rounded-xl' src={recipe.photo} alt="" />
                 </div>
