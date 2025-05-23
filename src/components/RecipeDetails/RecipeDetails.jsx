@@ -50,7 +50,7 @@ const RecipeDetails = () => {
     return (
         <div className={`${theme === "dark" ? "bg-[#0f1b28]" : "bg-[#F6F4F1]"}`}>
             <div className='text-center py-5'>
-                <h1 className='text-5xl font-bold fontRokkitt'>
+                <h1 className='text-3xl h-[100px] sm:h-fit md:text-4xl lg:text-5xl p-6  font-bold fontRokkitt'>
                     <span className={`${theme === "dark" ? "text-white" : "text-[#005A52]"}`}>
                     <Typewriter
                         words={[`${likeCount} people interested in this recipe`]}
@@ -64,25 +64,25 @@ const RecipeDetails = () => {
                     </span>
                 </h1>
                 </div>
-            <div className='w-8/12 mx-auto flex justify-between py-24'>
+            <div className={`w-11/12 sm:w-9/12 mb-8 mx-auto 2xl:flex 2xl:justify-between  rounded-2xl p-6 sm:p-16 ${theme === "dark" ? "bg-gray-800" : "bg-[#D0E5E0]"}`}>
                 <div>
-                    <img className='w-[600px] h-[400px] rounded-xl' src={recipe.photo} alt="" />
+                    <img className='w-full 2xl:w-[600px] h-[225px] sm:h-[400px] rounded-xl' src={recipe.photo} alt="" />
                 </div>
-                <div className='flex items-center gap-8 '>
+                <div className='2xl:flex justify-center items-center gap-8'>
                     <div>
                         
-                        <div className='flex flex-col gap-8 max-w-[350px]'>
-                        <div className={` p-8 rounded-xl ${theme === "dark" ? "bg-gray-800" : "bg-white"}`}>
+                        <div className='flex flex-col gap-2 sm:gap-6 mt-2 sm:mt-6 2xl:w-[350px] 2xl:ml-4'>
+                        <div className={` p-8 rounded-xl ${theme === "dark" ? "bg-[#0f1b28]" : "bg-white"}`}>
                             <h1 className=' text-lg font-bold'>Ingredients</h1>
                             <p>{recipe.ingredients}</p>
                         </div>
-                        <div className={` p-8 rounded-xl ${theme === "dark" ? "bg-gray-800" : "bg-white"}`}>
+                        <div className={` p-8 rounded-xl ${theme === "dark" ? "bg-[#0f1b28]" : "bg-white"}`}>
                             <h1 className=' text-lg font-bold'>Instructions</h1>
                             <p>{recipe.instructions}</p>
                         </div>
                     </div>
                     </div>
-                        <div className={` py-4 px-8 rounded-xl flex flex-col gap-3 ${theme === "dark" ? "bg-gray-800" : "bg-white"}`}>
+                        <div className={` py-4 px-8 rounded-xl flex justify-between flex-wrap 2xl:flex-col mt-2 sm:mt-6  gap-3 ${theme === "dark" ? "bg-[#0f1b28]" : "bg-white"}`}>
                             <div>
                                 <h1 className=' text-lg font-bold'>Cuisine Type</h1>
                                 <p>{ recipe.cuisine}</p>
@@ -103,11 +103,14 @@ const RecipeDetails = () => {
                                 <h1 className=' text-lg font-bold'>Like Count</h1>
                                 <p className='text-[#005A52] flex items-center gap-2.5'><FaHeart /> <span className=''>{ likeCount}</span></p>
                             </div>
-                            <div>
+                        
+                            <div className=' hidden 2xl:block'>
                                 <button onClick={handleLikeButton} className={`btn w-full  hover:bg-[#005A52] hover:text-white flex items-center justify-center gap-2 ${theme === "dark" ? "border border-[#56c9c1] text-[#56c9c1]" : "text-[#005A52]"}`}>Like <FaHeart /></button>
                             </div>
-                        
                         </div>
+                            <div className='mt-2 sm:mt-6 block 2xl:hidden'>
+                                <button onClick={handleLikeButton} className={`btn w-full  hover:bg-[#005A52] hover:text-white flex items-center justify-center gap-2 ${theme === "dark" ? "border border-[#56c9c1] text-[#56c9c1]" : "text-[#005A52]"}`}>Like <FaHeart /></button>
+                            </div>
                 </div>
             </div>
         </div>
