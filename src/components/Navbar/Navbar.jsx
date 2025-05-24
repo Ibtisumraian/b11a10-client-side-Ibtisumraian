@@ -5,7 +5,8 @@ import { signOut } from 'firebase/auth';
 import { auth } from '../firebase/firebase.init';
 import './nav.css'
 import { Bounce, toast } from 'react-toastify';
-import { MdDarkMode, MdLightMode } from 'react-icons/md';
+import { MdSunny } from 'react-icons/md';
+import { PiMoonStarsFill } from 'react-icons/pi';
 const Navbar = () => {
   const { user, theme, setTheme } = use(AuthContext)
 // setTheme
@@ -75,7 +76,7 @@ console.log(theme);
                 <div className="navbar-end flex items-center gap-3">
                   
                   <div className="dropdown dropdown-bottom sm:dropdown-left bg-none">
-                    <div tabIndex={0} role="button" className="btn md:p-1 h-[24px] md:w-[24px] md:h-[40px] text-sm flex md:flex-col items-center"><MdLightMode /><MdDarkMode /></div>
+                  <div tabIndex={0} role="button" className="btn btn-sm md:btn-md md:text-xl "> { theme === "dark" ? <PiMoonStarsFill /> : <MdSunny />}</div>
                     <ul tabIndex={0} className="dropdown-content menu gap-1 rounded-box z-1 w-fit md:w-56  ">
                       <li onClick={()=>handleThemeToggle("light")} className='bg-white text-black w-[100px] md:w-full'><a>Light</a></li>
                       <li onClick={()=>handleThemeToggle("dark")} className='bg-gray-400 w-[100px] md:w-full'><a>Dark</a></li>
