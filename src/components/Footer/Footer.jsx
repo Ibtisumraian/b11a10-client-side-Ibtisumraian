@@ -19,8 +19,8 @@ const Footer = () => {
                  <h1 className='fontRokkitt py-8 text-4xl sm:text-5xl font-semibold'>Get in Touch</h1>
             <div className='flex flex-col gap-4'>
                  <h1 className=' flex items-center gap-4'><FaPhoneAlt /><span>+88 01533 333 333</span></h1>
-                 <h1 className=' flex items-center gap-4'><MdEmail /><span>info@gmail.com</span></h1>
-                 <h1 className=' flex items-center gap-4'><FaLocationDot /><span>72, Wall street, King Road, Dhaka</span></h1>
+                 <h1 className=' flex items-center gap-4'><MdEmail /><span>suske@uchiha.com</span></h1>
+                 <h1 className=' flex items-center gap-4'><FaLocationDot /><span> 10 no ave, 2 no sector, Block: H, Aftabnagar, Dhaka</span></h1>
              </div>
         </div>
     </div>

@@ -56,7 +56,7 @@ const Home = () => {
                         <p className={`text-sm sm:text-lg text-center lg:text-left ${theme === "dark" && "text-white"}`}>Recipe Book is your go-to destination for delicious, easy-to-follow recipes created with home cooks in mind. With a growing collection of over 3,000 handpicked dishes, cooking tips, and meal ideas, we help food lovers around the world explore and enjoy home cooking every day. Our team of passionate food enthusiasts—including chefs, writers, testers, and photographers—work together to bring you trusted, flavorful recipes that you can count on.</p>
                         <button className={`btn btn-sm sm:btn-md mx-auto lg:mx-0 w-fit ${theme === "dark" && "border border-[#56c9c1] text-[#56c9c1]"}`}>Learn More</button>
                     </div>
-                    <div className='grid grid-cols-3 2xl:grid-cols-4 gap-3 lg:gap-0 p-3 2xl:p-6 rounded-2xl bg-[url(https://res.cloudinary.com/dd4np04jl/image/upload/v1747329942/13_cvgu8u.jpg)]'>
+                    <div className='grid grid-cols-3 2xl:grid-cols-4 gap-3 lg:gap-0 p-3 2xl:p-6 rounded-2xl bg-base-200 '>
                         <div className=' flex flex-col justify-center items-center'>
                             <div className="avatar">
                             <div className="mask mask-squircle w-13 sm:w-18 2xl:w-24">

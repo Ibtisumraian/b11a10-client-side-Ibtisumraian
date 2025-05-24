@@ -28,6 +28,11 @@ const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
+            const th = localStorage.getItem('theme')
+            document.documentElement.setAttribute('data-theme', th);
+            setTheme(th)
+            console.log(th);
+            
             setUser(user)
             setLoading(false)
         })
