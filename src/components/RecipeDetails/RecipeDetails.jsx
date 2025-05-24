@@ -38,8 +38,8 @@ const RecipeDetails = () => {
             body: JSON.stringify(newLikeCount)
         })
         .then(res=>res.json())
-        .then(data=>{
-            console.log(data);
+        .then(()=>{
+            
             
         })
         

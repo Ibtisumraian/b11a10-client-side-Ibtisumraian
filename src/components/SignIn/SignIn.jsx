@@ -13,8 +13,7 @@ const SignIn = () => {
         const email = e.target.email.value
         const password = e.target.password.value
         userSignInWithEmailPass(email, password)
-        .then(result=>{
-            console.log(result);
+        .then(()=>{
             toast.success('Signed in successfully!', {
                 position: "top-right",
                 autoClose: 5000,

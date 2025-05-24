@@ -26,7 +26,6 @@ const AllRecipes = () => {
         else {
             const cat = originalRecipes.filter(recipe => recipe.cuisine === categories);
             setRecipes(cat)
-            console.log(cat);
             
         }
         
