@@ -8,7 +8,7 @@ const SignUp = () => {
     useEffect(() => {
              window.scrollTo(0, 0)        
          }, [])
-    const { user, userSignInWithGoogle, userSignUpWithEmailPass, theme } = use(AuthContext);
+    const { user, userSignInWithGoogle, userSignUpWithEmailPass, theme, setPhoto } = use(AuthContext);
     const navigate = useNavigate()
     const location = useLocation()
     console.log(user);
@@ -25,12 +25,13 @@ const SignUp = () => {
         const username = e.target.name.value
         const userPhoto = e.target.photo.value
         userSignUpWithEmailPass(email, password)
-        .then(  (result)=>{
+        .then( async (result)=>{
             console.log(result);
-            updateProfile(result.user, {
+            await updateProfile(result.user, {
             displayName: username,
             photoURL: userPhoto,
             });
+            setPhoto(userPhoto)
             toast.success('Signed up successfully!', {
                             position: "top-right",
                             autoClose: 5000,
@@ -66,7 +67,8 @@ const SignUp = () => {
     const handleSignInWithGoogle = () => {
         userSignInWithGoogle()
         .then(result=>{
-            console.log(result);
+            console.log(result.user.photoURL);
+            
             toast.success('Signed in successfully!', {
                 position: "top-right",
                 autoClose: 5000,
@@ -78,7 +80,8 @@ const SignUp = () => {
                 theme: "colored",
                 transition: Bounce,
             });
-            navigate(location?.state || '/')
+            setPhoto(result.user.photoURL)
+            navigate('/')
         })
         .catch(error => {
             console.log(error);

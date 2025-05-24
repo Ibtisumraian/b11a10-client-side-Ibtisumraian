@@ -7,6 +7,7 @@ const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null)
     const [loading, setLoading] = useState(true);
     const [theme, setTheme] = useState("")
+    const [photo, setPhoto] = useState()
     const googleProvider = new GoogleAuthProvider()
 
     const userSignUpWithEmailPass = (email, password) => {
@@ -47,7 +48,9 @@ const AuthProvider = ({ children }) => {
         userSignInWithEmailPass,
         userSignInWithGoogle,
         setTheme,
-        theme
+        theme,
+        photo,
+        setPhoto
     }
     return (
         <AuthContext value={info}>

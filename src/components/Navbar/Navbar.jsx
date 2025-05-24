@@ -8,8 +8,10 @@ import { Bounce, toast } from 'react-toastify';
 import { MdSunny } from 'react-icons/md';
 import { PiMoonStarsFill } from 'react-icons/pi';
 const Navbar = () => {
-  const { user, theme, setTheme } = use(AuthContext)
-// setTheme
+  const { user, theme, setTheme, photo } = use(AuthContext)
+  // setTheme
+  console.log(user?.photoURL);
+  
   const handleSignOut = () => {
     signOut(auth)
     .then(()=>{
@@ -92,7 +94,7 @@ console.log(theme);
                 
                   <div className="avatar">
                     <div className="w-9 md:w-16 rounded-full">
-                      <img src={user.photoURL} />
+                      <img src={user ? user?.photoURL : photo} />
                     </div>
                   </div>
                 

@@ -4,7 +4,7 @@ import { AuthContext } from '../AuthContext/AuthContext';
 import { Bounce, toast } from 'react-toastify';
 
 const SignIn = () => {
-    const { userSignInWithEmailPass, userSignInWithGoogle, theme } = use(AuthContext)
+    const { userSignInWithEmailPass, userSignInWithGoogle, theme, setPhoto } = use(AuthContext)
     const navigate = useNavigate()
     const location = useLocation()
 
@@ -61,6 +61,7 @@ const SignIn = () => {
                 theme: "colored",
                 transition: Bounce,
             });
+            setPhoto(result.user.photoURL)
             navigate(location?.state || '/')
         })
         .catch(error => {
@@ -152,7 +153,7 @@ const SignIn = () => {
                         <Link><p className='hover:text-blue-700 text-sm sm:text-base w-fit '>Forgot password ?</p></Link>
               </div>
               <div className="pt-4 ">
-                  <button className="btn hover:bg-[#7BA7E3] hover:text-white  w-full">Sign In</button>
+                  <button className="btn  w-full">Sign In</button>
               </div>
               </form>
               
