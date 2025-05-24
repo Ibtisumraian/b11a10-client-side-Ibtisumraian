@@ -3,7 +3,6 @@ import { AuthContext } from '../AuthContext/AuthContext';
 import { FaHeart, FaRegHeart } from 'react-icons/fa';
 import { MdDelete, MdEdit } from 'react-icons/md';
 import Swal from 'sweetalert2';
-// import { useNavigate } from 'react-router';
 
 const MyRecipes = () => {
     const { user, theme } = use(AuthContext)
@@ -11,31 +10,19 @@ const MyRecipes = () => {
     const [modal, setModal] = useState(false)
     const [modalData, setModalData] = useState([])
 
-    // const navigate = useNavigate()
-    console.log(modalData);
-
     useEffect(() => {
         fetch(`https://recipe-book-server-six.vercel.app/user/${user.email}`)
         .then(res=>res.json())
         .then(data=>{
-            console.log(data);
             setRecipe(data)
         })
     },[user])
     
-    // const handleLikeButton = () => {
-    //     Swal.fire({
-    //                     icon: "error",
-    //                     title: "You Can Not Like Your Own Recipe!",
-    //                 });
-    // }
     const handleEditButton = (id) => {
-        console.log(id)
-        // navigate(`/UpdateRecipes/${id}`)
+    
         fetch(`https://recipe-book-server-six.vercel.app/recipes/${id}`)
         .then(res=>res.json())
         .then(data=>{
-            console.log(data);
             setModalData(data)
         })
         setModal(true)
@@ -60,7 +47,6 @@ const MyRecipes = () => {
         })
         .then(res=>res.json())
         .then(data=>{
-            console.log("data after update", data);
             if (data.modifiedCount) {
                 Swal.fire({
                     position: "top-end",
@@ -73,11 +59,9 @@ const MyRecipes = () => {
             fetch(`https://recipe-book-server-six.vercel.app/user/${user.email}`)
         .then(res=>res.json())
         .then(data=>{
-            console.log(data);
             setRecipe(data)
         })
         })
-        console.log(userRecipe);
         
         setModal(false)
     }
@@ -162,13 +146,9 @@ const MyRecipes = () => {
                                 <h1 className=' text-sm sm:text-lg font-bold'>Like Count</h1>
                                 <p className='text-[#005A52] flex items-center  gap-2.5'><FaHeart /> <span className=''>{ recipe.like_count}</span></p>
                             </div>
-                            {/* <div>
-                                <button onClick={handleLikeButton} className='btn w-full text-[#005A52] hover:bg-[#005A52] hover:text-white flex items-center justify-center gap-2'>Like <FaHeart /></button>
-                            </div> */}
                         </div>
                          
                                 <div className='flex justify-around 2xl:flex 2xl:flex-col gap-4 ml-4 mt-7'>
-                                {/* <button onClick={handleLikeButton} className='btn bg-[#005A52] text-white text-xl w-fit'><FaHeart /></button> */}
                                 <button onClick={()=>handleEditButton(recipe._id)}  className='btn bg-[#3C393B] text-white text-xl w-fit'><MdEdit /></button>
                                 <button onClick={()=>handleDeleteButton(recipe._id)} className='btn bg-[#bbad34] text-white text-xl w-fit'><MdDelete /></button>
                                 </div>
@@ -270,17 +250,6 @@ const MyRecipes = () => {
                 </form>              
             </div>
         </div>
-        
-        
-        
-            {/* <div className="flex justify-end ">
-              
-              <button
-                className="bg-[#7BA7E3] text-white btn"
-                onClick={()=>setModal(false)}>
-                Confirm
-              </button>
-            </div> */}
           </div>
         </div>
       )}

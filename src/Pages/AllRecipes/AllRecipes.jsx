@@ -14,16 +14,12 @@ const AllRecipes = () => {
         setOriginalRecipes(initialRecipes)
          }, [initialRecipes])
     const navigate = useNavigate()
-    console.log(recipes);
-
     const handleRecipeDetailsBtn = (id) => {
         navigate(`/RecipeDetails/${id}`)
     }
 
     const handleRecipeCategories = (e) => {
-        // e.preventDefault()
         const categories = e.target.value
-        // console.log(categories);
         if (categories === 'All') {
             setRecipes(originalRecipes)
         }

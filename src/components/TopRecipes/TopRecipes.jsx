@@ -7,7 +7,6 @@ const TopRecipes = ({ topRecipes }) => {
     const { theme } = use(AuthContext)
     const navigate = useNavigate()
     const handleRecipeDetails = (id) => {
-        console.log(id);
         navigate(`/RecipeDetails/${id}`)
     }
     return (

@@ -5,26 +5,12 @@ import { useLoaderData } from 'react-router';
 import { AuthContext } from '../../components/AuthContext/AuthContext';
 
 const Home = () => {
-    // const [topRecipes, setTopRecipes] = useState()
     const { theme } = use(AuthContext)
     const topRecipes = useLoaderData()
-    console.log(topRecipes);
     
      useEffect(() => {
          window.scrollTo(0, 0)        
      }, [])
-    
-    useEffect(() => {
-    fetch('https://recipe-book-server-six.vercel.app/recipes')
-    .then(res => res.json())
-    .then(data => {
-      console.log(data);
-      
-    })
-    }, []);
-    
-    console.log(topRecipes);
-    
 
     return (
         <div className={` ${theme == "dark" && "bg-[#0f1b28]"}`}>

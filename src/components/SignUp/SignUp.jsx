@@ -8,25 +8,20 @@ const SignUp = () => {
     useEffect(() => {
              window.scrollTo(0, 0)        
          }, [])
-    const { user, userSignInWithGoogle, userSignUpWithEmailPass, theme, setPhoto } = use(AuthContext);
+    const { userSignInWithGoogle, userSignUpWithEmailPass, theme, setPhoto } = use(AuthContext);
     const navigate = useNavigate()
     const location = useLocation()
-    console.log(user);
+    
     
 
     const handleFormSubmitBtn = (e) => {
         e.preventDefault()
-        // const form = e.target
-        // const formData = new FormData(form)
-        // const user = Object.fromEntries(formData.entries());
-        // console.log(user);
         const email = e.target.email.value
         const password = e.target.password.value
         const username = e.target.name.value
         const userPhoto = e.target.photo.value
         userSignUpWithEmailPass(email, password)
         .then( async (result)=>{
-            console.log(result);
             await updateProfile(result.user, {
             displayName: username,
             photoURL: userPhoto,
@@ -46,7 +41,6 @@ const SignUp = () => {
             navigate(location?.state || '/')
         })
         .catch(error=>{
-            console.log(error);
             if (error) {
                 toast.error('Something went wrong while signing up. Please try again.!', {
                     position: "top-center",
@@ -67,7 +61,6 @@ const SignUp = () => {
     const handleSignInWithGoogle = () => {
         userSignInWithGoogle()
         .then(result=>{
-            console.log(result.user.photoURL);
             
             toast.success('Signed in successfully!', {
                 position: "top-right",
@@ -84,7 +77,6 @@ const SignUp = () => {
             navigate('/')
         })
         .catch(error => {
-            console.log(error);
             if (error) {
                 toast.error('There was a problem signing in with Google!', {
                     position: "top-center",
@@ -225,9 +217,6 @@ const SignUp = () => {
                 </button>
               </div>
       </div>
-      {/* <div className="hidden lg:block">
-        <img className="w-[700px]" src="https://i.ibb.co.com/2YF6ZML7/sign-up.png" alt="Imgbb server down" />
-      </div> */}
       </div>
     </div>
     );

@@ -9,9 +9,7 @@ import { MdSunny } from 'react-icons/md';
 import { PiMoonStarsFill } from 'react-icons/pi';
 const Navbar = () => {
   const { user, theme, setTheme, photo } = use(AuthContext)
-  // setTheme
-  console.log(user?.photoURL);
-  
+
   const handleSignOut = () => {
     signOut(auth)
     .then(()=>{
@@ -34,15 +32,11 @@ const Navbar = () => {
   }
 
     const handleThemeToggle = (td) => {
-    // const isDark = e.target.checked;
-    // const theme = isDark ? 'dark' : 'light';
     document.documentElement.setAttribute('data-theme', td);
       localStorage.setItem('theme', td);
       const th = localStorage.getItem("theme")
-      console.log(th);
       setTheme(th)
   };
-console.log(theme);
 
     const links = <>
         
@@ -101,7 +95,6 @@ console.log(theme);
               </div>
               <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-1 w-40 sm:w-52 p-2 shadow-sm">
                     <li className='font-semibold my-2'>{ user.displayName}</li>
-                    {/* <li>Balance : {blance} BDT</li> */}
                     <button onClick={handleSignOut} className={`btn btn-sm text-[#1C2B4A] hover:bg-[#005A52]  hover:text-white ${theme === "dark" ? "border border-[#56c9c1] text-[#56c9c1]" : ""}`}>Sign Out</button>
                   </ul>
           </div> 

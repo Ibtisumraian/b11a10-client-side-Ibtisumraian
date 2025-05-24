@@ -15,7 +15,6 @@ const AddRecipes = () => {
         recipeData.categories = categories
         recipeData.like_count= parseInt(recipeData.like_count)
         const userRecipe = { ...recipeData, userEmail, userName }
-        console.log(userRecipe);
         fetch('https://recipe-book-server-six.vercel.app/recipes', {
             method: "POST",
             headers: {
@@ -25,7 +24,6 @@ const AddRecipes = () => {
         })
         .then(res=>res.json())
         .then(data=>{
-            console.log(data);
             if (data.insertedId) {
                 Swal.fire({
                     title: "Recipe Added Successfully!",

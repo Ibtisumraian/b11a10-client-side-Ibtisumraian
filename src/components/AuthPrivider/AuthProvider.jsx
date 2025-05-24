@@ -32,7 +32,7 @@ const AuthProvider = ({ children }) => {
             const th = localStorage.getItem('theme')
             document.documentElement.setAttribute('data-theme', th);
             setTheme(th)
-            console.log(th);
+            
             
             setUser(user)
             setLoading(false)

@@ -25,9 +25,7 @@ const RecipeDetails = () => {
                 title: "You Can Not Like Your Own Recipe!",
             });
         }
-        // const newLike = likeCount + 1
         setLikeCount(likeCount + 1)
-        // recipe.like_count = likeCount
         const newLikeCount = {
             id: recipe._id,
             like_count: likeCount + 1
@@ -40,13 +38,12 @@ const RecipeDetails = () => {
             body: JSON.stringify(newLikeCount)
         })
         .then(res=>res.json())
-        .catch(data=>{
+        .then(data=>{
             console.log(data);
             
         })
         
     }
-    console.log(likeCount);
     return (
         <div className={`pb-12 ${theme === "dark" ? "bg-[#0f1b28]" : "bg-[#F6F4F1]"}`}>
             <div className='text-center py-5'>
