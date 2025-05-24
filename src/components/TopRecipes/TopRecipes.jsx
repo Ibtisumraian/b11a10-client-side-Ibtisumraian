@@ -22,8 +22,8 @@ const TopRecipes = ({ topRecipes }) => {
                     return <div key={recipe._id} className={`card w-full shadow-sm ${theme == "dark" ? "bg-gray-800" : "bg-base-100"}`}>
                 <figure className="px-10 pt-10">
                     <img
-                    src={recipe.photo}
-                    alt="Shoes"
+                    src={recipe.photo || "https://res.cloudinary.com/dd4np04jl/image/upload/v1748093770/placeholder_ji3q5g.jpg"}
+                    alt="Recipe image"
                     className="rounded-xl w-[300px] 2xl:w-[370px] h-[245px]" />
                 </figure>
                 <div className="card-body text-center items-center">

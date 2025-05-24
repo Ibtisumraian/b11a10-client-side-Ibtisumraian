@@ -59,7 +59,7 @@ const AllRecipes = () => {
                     return <div key={recipe._id} className={`card bg-base-100  shadow-sm ${theme === "dark" ? "bg-gray-800" : "bg-base-100" }`}>
                             <figure className="px-4 lg:px-10 pt-10">
                                 <img
-                                src={recipe.photo}
+                                src={recipe.photo || "https://res.cloudinary.com/dd4np04jl/image/upload/v1748093770/placeholder_ji3q5g.jpg"}
                                 alt="Shoes"
                                 className="rounded-xl w-[300px] h-[200px] object-cover" />
                             </figure>

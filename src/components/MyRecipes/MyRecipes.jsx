@@ -23,12 +23,12 @@ const MyRecipes = () => {
         })
     },[user])
     
-    const handleLikeButton = () => {
-        Swal.fire({
-                        icon: "error",
-                        title: "You Can Not Like Your Own Recipe!",
-                    });
-    }
+    // const handleLikeButton = () => {
+    //     Swal.fire({
+    //                     icon: "error",
+    //                     title: "You Can Not Like Your Own Recipe!",
+    //                 });
+    // }
     const handleEditButton = (id) => {
         console.log(id)
         // navigate(`/UpdateRecipes/${id}`)
@@ -124,7 +124,7 @@ const MyRecipes = () => {
                     return <div key={recipe._id}
                 className={`w-11/12 sm:w-9/12 mb-8 mx-auto 2xl:flex 2xl:justify-between  rounded-2xl p-6 sm:p-16 ${theme === "dark" ? "bg-gray-800" : "bg-[#D0E5E0]"}`}>
                 <div className='flex items-center justify-center mb-2'>
-                    <img className='w-full 2xl:w-[600px] h-[225px] sm:h-[400px] rounded-xl' src={recipe.photo} alt="" />
+                    <img className='w-full 2xl:w-[600px] h-[225px] sm:h-[400px] rounded-xl' src={recipe.photo || "https://res.cloudinary.com/dd4np04jl/image/upload/v1748093770/placeholder_ji3q5g.jpg"} alt="" />
                 </div>
                 <div className='2xl:flex justify-center items-center gap-8 '>
                     <div>
@@ -168,7 +168,7 @@ const MyRecipes = () => {
                         </div>
                          
                                 <div className='flex justify-around 2xl:flex 2xl:flex-col gap-4 ml-4 mt-7'>
-                                <button onClick={handleLikeButton} className='btn bg-[#005A52] text-white text-xl w-fit'><FaHeart /></button>
+                                {/* <button onClick={handleLikeButton} className='btn bg-[#005A52] text-white text-xl w-fit'><FaHeart /></button> */}
                                 <button onClick={()=>handleEditButton(recipe._id)}  className='btn bg-[#3C393B] text-white text-xl w-fit'><MdEdit /></button>
                                 <button onClick={()=>handleDeleteButton(recipe._id)} className='btn bg-[#bbad34] text-white text-xl w-fit'><MdDelete /></button>
                                 </div>
@@ -236,7 +236,8 @@ const MyRecipes = () => {
                         </div>
                         </div>
                         <div>
-                            <p className='text-sm sm:text-base font-semibold py-2'>Categories </p>
+                            <p className='text-sm sm:text-base font-semibold pt-2'>Categories </p>
+                            <p className='text-sm mb-4'>Your selected categories was <br /> {modalData?.categories?.map((cat, index) => <span className='font-bold' key={index}>{ cat}, </span>)}</p>
                             <div className='flex flex-wrap gap-6 w-[250px] sm:w-[350px]'>
                                 <div className='flex items-center gap-2'>
                                     <input name='categories' type="checkbox" defaultChecked={modalData?.categories?.includes('Breakfast')} defaultValue='Breakfast'  className="checkbox" />Breakfast

@@ -50,7 +50,7 @@ const AddRecipes = () => {
                         </div>                      
                         <div>
                             <p className='text-sm sm:text-base font-semibold py-2'>URL</p>
-                            <input required name='photo' type="url" placeholder="https://" className="input w-[250px] sm:w-[350px]"  title="Must be valid URL" />
+                            <input required name='photo' type="text" placeholder="https://" className="input w-[250px] sm:w-[350px]"  title="Must be valid URL" />
                         </div> 
                         </div>  
                         

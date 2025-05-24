@@ -66,7 +66,7 @@ const RecipeDetails = () => {
                 </div>
             <div className={`w-11/12 sm:w-9/12  mx-auto 2xl:flex 2xl:justify-between  rounded-2xl p-6 sm:p-16 ${theme === "dark" ? "bg-gray-800" : "bg-[#D0E5E0]"}`}>
                 <div>
-                    <img className='w-full 2xl:w-[600px] h-[225px] sm:h-[400px] rounded-xl' src={recipe.photo} alt="" />
+                    <img className='w-full 2xl:w-[600px] h-[225px] sm:h-[400px] rounded-xl' src={recipe.photo || "https://res.cloudinary.com/dd4np04jl/image/upload/v1748093770/placeholder_ji3q5g.jpg"} alt="" />
                 </div>
                 <div className='2xl:flex justify-center items-center gap-8'>
                     <div>

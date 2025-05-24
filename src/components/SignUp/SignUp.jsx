@@ -31,7 +31,7 @@ const SignUp = () => {
             displayName: username,
             photoURL: userPhoto,
             });
-            toast.success('Sign Up Successful!', {
+            toast.success('Signed up successfully!', {
                             position: "top-right",
                             autoClose: 5000,
                             hideProgressBar: false,
@@ -46,7 +46,19 @@ const SignUp = () => {
         })
         .catch(error=>{
             console.log(error);
-            
+            if (error) {
+                toast.error('Something went wrong while signing up. Please try again.!', {
+                    position: "top-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: false,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "colored",
+                    transition: Bounce,
+                    })
+            }
         })
         
     }
@@ -55,7 +67,7 @@ const SignUp = () => {
         userSignInWithGoogle()
         .then(result=>{
             console.log(result);
-            toast.success('Signed In Successfully!', {
+            toast.success('Signed in successfully!', {
                 position: "top-right",
                 autoClose: 5000,
                 hideProgressBar: false,
@@ -66,11 +78,23 @@ const SignUp = () => {
                 theme: "colored",
                 transition: Bounce,
             });
-            navigate('/')
+            navigate(location?.state || '/')
         })
         .catch(error => {
             console.log(error);
-            
+            if (error) {
+                toast.error('There was a problem signing in with Google!', {
+                    position: "top-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: false,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "colored",
+                    transition: Bounce,
+                    })
+            }
         })
     }
     return (
