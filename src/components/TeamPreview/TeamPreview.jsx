@@ -23,7 +23,7 @@ const TeamPreview = ({ theme }) => {
   ];
 
   return (
-    <section className={`py-24 mb-32 ${theme === "dark" ? "bg-gray-800 text-[#56c9c1]" : "bg-[#D3D3D3] text-[#003934]"}`}>
+    <section className={`py-24  ${theme === "dark" ? "bg-gray-800 text-[#56c9c1]" : "bg-[#F6F4F1] text-[#003934]"}`}>
       <div className="w-11/12 lg:w-9/12 mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
         {/* LEFT CONTENT */}
         <motion.div
@@ -59,7 +59,9 @@ const TeamPreview = ({ theme }) => {
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
           viewport={{ once: true }}
-          className="grid grid-cols-3 2xl:grid-cols-4 gap-4 bg-base-200 p-4 sm:p-6 rounded-2xl"
+          className={`grid grid-cols-3 2xl:grid-cols-4 gap-4  drop-shadow-xl/20 p-4 sm:p-6 rounded-2xl ${
+              theme === 'dark' ? 'bg-gray-900' : 'bg-white'
+            }`}
         >
           {members.map((member, i) => (
             <motion.div

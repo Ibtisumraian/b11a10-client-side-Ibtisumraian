@@ -12,10 +12,14 @@ const FoodBankSection = ({ theme }) => {
         transition={{ duration: 0.8, ease: "easeOut" }}
         viewport={{ once: true }}
       >
-        <h1 className="text-3xl sm:text-5xl font-bold text-gray-700 dark:text-white fontRokkitt py-6 sm:py-12">
+        <h1 className={`text-3xl sm:text-5xl font-bold   fontRokkitt py-6 sm:py-12 ${
+              theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
+            }`}>
           Our Mission: <span className="text-[#005A52] dark:text-[#56c9c1]">Food Bank</span>
         </h1>
-        <p className="max-w-3xl mx-auto text-base sm:text-xl text-gray-400 px-4 dark:text-gray-300">
+        <p className={`max-w-3xl mx-auto text-base sm:text-xl px-4 ${
+              theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
+            }`}>
           Fighting hunger, one plate at a time. We believe food is a right, not a privilege.
         </p>
       </motion.div>

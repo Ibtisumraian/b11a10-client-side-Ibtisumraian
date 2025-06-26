@@ -6,6 +6,8 @@ import { AuthContext } from '../../components/AuthContext/AuthContext';
 import TeamPreview from '../../components/TeamPreview/TeamPreview';
 import { motion } from "framer-motion";
 import FoodBankSection from '../../components/FoodBankSection/FoodBankSection';
+import UserTestimonials from '../../components/UserTestimonials/UserTestimonials';
+import NewsletterSection from '../../components/NewsletterSection/NewsletterSection';
 
 const Home = () => {
     const { theme } = use(AuthContext)
@@ -31,6 +33,13 @@ const Home = () => {
     
             <div>
                 <TeamPreview theme={theme}/>
+            </div>
+
+            <div>
+                <UserTestimonials theme={theme} />
+            </div>
+            <div>
+                <NewsletterSection  theme={theme} />
             </div>
         </div>
     );

@@ -80,13 +80,15 @@ const Banner = () => {
       <div className="relative z-10 w-9/12 mx-auto flex flex-col items-start justify-center h-full px-4 text-left">
         <Fade direction="left" duration={2500} key={slide.id}>
           <h1
-            className={`text-3xl text-gray-600 sm:text-5xl lg:text-7xl font-bold mb-4 fontRokkitt max-w-[550px] ${
-              theme === 'dark' ? 'text-[#56c9c1]' : 'text-[#333333]'
+            className={`text-3xl  sm:text-5xl lg:text-7xl font-bold mb-4 fontRokkitt max-w-[550px] ${
+              theme === 'dark' ? 'text-[#56c9c1]' : 'text-gray-600'
             }`}
           >
             {slide.title}
           </h1>
-          <p className="text-md sm:text-lg text-gray-600 mb-6 max-w-[650px]">
+          <p className={`text-md sm:text-lg mb-6 max-w-[650px] ${
+              theme === 'dark' ? 'text-white' : 'text-gray-600'
+            }`}>
             {slide.description}
           </p>
           <Link to="/AllRecipes">
