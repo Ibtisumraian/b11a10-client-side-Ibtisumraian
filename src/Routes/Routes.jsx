@@ -13,6 +13,7 @@ import AboutUs from "../components/AboutUs/AboutUs";
 import ContactUs from "../components/ContactUs/ContactUs";
 import Support from "../components/Support/Support";
 import UnderConstruction from "../Pages/UnderConstruction/UnderConstruction";
+import TeamSection from "../components/TeamSection/TeamSection";
 
 export const router = createBrowserRouter([
   {
@@ -38,6 +39,11 @@ export const router = createBrowserRouter([
         {
             path: '/Support',
             Component: Support
+
+        },
+        {
+            path: '/TeamSection',
+            Component: TeamSection
 
         },
         {

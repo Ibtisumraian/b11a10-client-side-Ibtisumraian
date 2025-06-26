@@ -105,56 +105,94 @@ const MyRecipes = () => {
             </div>
             {
                 recipes.map(recipe => {
-                    return <div key={recipe._id}
-                className={`w-11/12 sm:w-9/12 mb-8 mx-auto 2xl:flex 2xl:justify-between  rounded-2xl p-6 sm:p-16 ${theme === "dark" ? "bg-gray-800" : "bg-[#D0E5E0]"}`}>
-                <div className='flex items-center justify-center mb-2'>
-                    <img className='w-full 2xl:w-[600px] h-[225px] sm:h-[400px] rounded-xl' src={recipe.photo || "https://res.cloudinary.com/dd4np04jl/image/upload/v1748093770/placeholder_ji3q5g.jpg"} alt="" />
-                </div>
-                <div className='2xl:flex justify-center items-center gap-8 '>
-                    <div>
-                        
-                        <div className='flex flex-col gap-2 sm:gap-8 2xl:w-[350px] 2xl:ml-4'>
-                        <div className={` p-8 rounded-xl ${theme === "dark" ? "bg-[#0f1b28]" : "bg-white"}`}>
-                            <h1 className=' text-base sm:text-lg font-bold'>Ingredients</h1>
-                            <p className='text-sm sm:text-base'>{recipe.ingredients}</p>
-                        </div>
-                        <div className={` p-8 rounded-xl ${theme === "dark" ? "bg-[#0f1b28]" : "bg-white"}`}>
-                            <h1 className=' text-base sm:text-lg font-bold'>Instructions</h1>
-                            <p className='text-sm sm:text-base'>{recipe.instructions}</p>
-                        </div>
-                    </div>
-                    </div>
-                        <div className=' 2xl:flex items-center sm:gap-8 my-2 sm:my-8'>
-                            <div className={` py-4 px-8 rounded-xl flex justify-between flex-wrap 2xl:flex-col   gap-3 ${theme === "dark" ? "bg-[#0f1b28]" : "bg-white"}`}>
-                            <div>
-                                <h1 className=' text-sm sm:text-lg font-bold'>Cuisine Type</h1>
-                                <p className='text-sm sm:text-base'>{ recipe.cuisine}</p>
+                    return <div
+                            key={recipe._id}
+                            className={`w-11/12 sm:w-9/12 mb-12 mx-auto rounded-2xl p-6 sm:p-12 2xl:flex 2xl:gap-8 shadow-lg ${
+                                theme === "dark" ? "bg-gray-800" : "bg-[#D0E5E0]"
+                            }`}
+                            >
+                            {/* Left Side - Image */}
+                            <div className="2xl:w-[600px] flex justify-center items-center">
+                                <img
+                                className="w-full h-[225px] sm:h-[400px] object-cover rounded-xl shadow-md"
+                                src={
+                                    recipe.photo ||
+                                    "https://res.cloudinary.com/dd4np04jl/image/upload/v1748093770/placeholder_ji3q5g.jpg"
+                                }
+                                alt="Recipe"
+                                />
                             </div>
-                            <div>
-                                <h1 className=' text-sm sm:text-lg font-bold'>Preparation Time</h1>
-                                <p className='text-sm sm:text-base'>{ recipe.preparation_time} minute</p>
-                            </div>
-                            <div>
-                                <h1 className=' text-sm sm:text-lg font-bold'>Categories</h1>
-                                <ul className='text-sm sm:text-base'>
-                                    {
-                                        recipe.categories.map((cat, index) => <li key={index}>{ cat}</li>)
-                                    }
-                                </ul>
-                            </div>
-                            <div>
-                                <h1 className=' text-sm sm:text-lg font-bold'>Like Count</h1>
-                                <p className='text-[#005A52] flex items-center  gap-2.5'><FaHeart /> <span className=''>{ recipe.like_count}</span></p>
-                            </div>
-                        </div>
-                         
-                                <div className='flex justify-around 2xl:flex 2xl:flex-col gap-4 ml-4 mt-7'>
-                                <button onClick={()=>handleEditButton(recipe._id)}  className='btn bg-[#3C393B] text-white text-xl w-fit'><MdEdit /></button>
-                                <button onClick={()=>handleDeleteButton(recipe._id)} className='btn bg-[#bbad34] text-white text-xl w-fit'><MdDelete /></button>
+
+                            {/* Right Side - Content */}
+                            <div className="flex-1 mt-6 2xl:mt-0 flex flex-col gap-6">
+                                {/* Ingredients & Instructions */}
+                                <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
+                                <div
+                                    className={`p-6 rounded-xl shadow-sm ${
+                                    theme === "dark" ? "bg-[#0f1b28] text-white" : "bg-white text-black"
+                                    }`}
+                                >
+                                    <h2 className="text-lg font-semibold mb-2"> Ingredients</h2>
+                                    <p className="text-sm sm:text-base">{recipe.ingredients}</p>
                                 </div>
-                        </div>
-                </div>
-            </div>
+                                <div
+                                    className={`p-6 rounded-xl shadow-sm ${
+                                    theme === "dark" ? "bg-[#0f1b28] text-white" : "bg-white text-black"
+                                    }`}
+                                >
+                                    <h2 className="text-lg font-semibold mb-2"> Instructions</h2>
+                                    <p className="text-sm sm:text-base">{recipe.instructions}</p>
+                                </div>
+                                </div>
+
+                                {/* Meta Info */}
+                                <div
+                                className={`p-6 rounded-xl shadow-sm flex flex-wrap justify-between gap-4 ${
+                                    theme === "dark" ? "bg-[#0f1b28] text-white" : "bg-white text-black"
+                                }`}
+                                >
+                                <div>
+                                    <h3 className="text-sm sm:text-lg font-semibold">Cuisine Type</h3>
+                                    <p className="text-sm sm:text-base">{recipe.cuisine}</p>
+                                </div>
+                                <div>
+                                    <h3 className="text-sm sm:text-lg font-semibold"> Preparation Time</h3>
+                                    <p className="text-sm sm:text-base">{recipe.preparation_time} minute</p>
+                                </div>
+                                <div>
+                                    <h3 className="text-sm sm:text-lg font-semibold"> Categories</h3>
+                                    <ul className="text-sm sm:text-base list-disc list-inside">
+                                    {recipe.categories.map((cat, index) => (
+                                        <li key={index}>{cat}</li>
+                                    ))}
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h3 className="text-sm sm:text-lg font-semibold"> Like Count</h3>
+                                    <p className="text-[#005A52] flex items-center gap-2.5">
+                                    <FaHeart /> <span>{recipe.like_count}</span>
+                                    </p>
+                                </div>
+                                </div>
+
+                                {/* Buttons */}
+                                <div className="grid grid-cols-2 gap-4 mt-4 2xl:mt-0 ">
+                                <button
+                                    onClick={() => handleDeleteButton(recipe._id)}
+                                    className="btn bg-[#bbad34] text-white text-xl p-3 rounded-xl shadow hover:scale-105 transition-transform"
+                                >
+                                    <MdDelete />
+                                </button>
+                                <button
+                                    onClick={() => handleEditButton(recipe._id)}
+                                    className="btn bg-[#3C393B] text-white text-xl p-3 rounded-xl shadow hover:scale-105 transition-transform"
+                                >
+                                    <MdEdit />
+                                </button>
+                                </div>
+                            </div>
+                            </div>
+
                 })
             }
 

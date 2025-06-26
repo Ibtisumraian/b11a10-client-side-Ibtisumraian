@@ -52,7 +52,7 @@ const RecipeDetails = () => {
                 <span className={`${theme === "dark" ? "text-white" : "text-[#005A52]"}`}>
                     <Typewriter
                     words={[`${likeCount} people interested in this recipe`]}
-                    loop={Infinity}
+                    loop={1}
                     cursor
                     cursorStyle="||"
                     typeSpeed={70}
@@ -97,7 +97,7 @@ const RecipeDetails = () => {
                     <p>{recipe.cuisine}</p>
                     </div>
                     <div>
-                    <h3 className="font-semibold">⏱ Preparation Time</h3>
+                    <h3 className="font-semibold"> Preparation Time</h3>
                     <p>{recipe.preparation_time} minutes</p>
                     </div>
                     <div>
