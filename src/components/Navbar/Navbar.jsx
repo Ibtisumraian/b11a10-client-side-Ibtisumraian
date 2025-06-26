@@ -40,10 +40,13 @@ const Navbar = () => {
 
     const links = <>
         
-        <NavLink className="btn" to='/'>Home</NavLink>
-        <NavLink className="btn" to='/AllRecipes'>All Recipes</NavLink>
-        <NavLink className="btn" to='/AddRecipes'>Add Recipes</NavLink>
-        <NavLink className="btn" to='/MyRecipes'>My Recipes</NavLink>
+        <NavLink className="text-white text-lg" to='/'>Home</NavLink>
+        <NavLink className="text-white text-lg" to='/AllRecipes'>All Recipes</NavLink>
+        <NavLink className="text-white text-lg" to='/aboutUs'>About Us</NavLink>
+        <NavLink className="text-white text-lg" to='/MyRecipes'>Contact</NavLink>
+        <NavLink className="text-white text-lg" to='/MyRecipes'>Support</NavLink>
+        {/* <NavLink className="text-white text-lg" to='/AddRecipes'>Add Recipes</NavLink>
+        <NavLink className="text-white text-lg" to='/MyRecipes'>My Recipes</NavLink> */}
     </>
     return (
       <div className={` ${theme == "dark" ? "bg-gray-800" : "bg-[#005A52]"}`}>
@@ -65,7 +68,7 @@ const Navbar = () => {
                   </div>
                 </div>
                 <div className="navbar-center hidden lg:flex">
-                  <ul className="menu menu-horizontal flex gap-3 px-1">
+                  <ul className="menu menu-horizontal flex gap-6 px-1">
                   {links}
                   </ul>
                 </div>

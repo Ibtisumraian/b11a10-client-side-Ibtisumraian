@@ -9,6 +9,7 @@ import AllRecipes from "../Pages/AllRecipes/Allrecipes";
 import RecipeDetails from "../components/RecipeDetails/RecipeDetails";
 import MyRecipes from "../components/MyRecipes/MyRecipes";
 import PageNotFound from "../components/PageNotFound/PageNotFound";
+import AboutUs from "../components/AboutUs/AboutUs";
 
 export const router = createBrowserRouter([
   {
@@ -20,6 +21,11 @@ export const router = createBrowserRouter([
             hydrateFallbackElement:<div className='  w-[90%] py-40 mx-auto flex justify-center items-center'><span className="loading loading-bars loading-xl"></span></div>,
             loader: ()=>fetch('https://recipe-book-server-six.vercel.app/TopRecipes'),
             Component: Home
+        },
+        {
+            path: '/aboutUs',
+            Component: AboutUs
+
         },
         {
             path: '/AddRecipes',
