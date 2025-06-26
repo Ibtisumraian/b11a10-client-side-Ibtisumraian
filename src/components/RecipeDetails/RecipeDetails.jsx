@@ -45,72 +45,90 @@ const RecipeDetails = () => {
         
     }
     return (
-        <div className={`pb-12 ${theme === "dark" ? "bg-[#0f1b28]" : "bg-[#F6F4F1]"}`}>
-            <div className='text-center py-5'>
-                <h1 className='text-3xl h-[100px] sm:h-fit md:text-4xl lg:text-5xl p-6  font-bold fontRokkitt'>
-                    <span className={`${theme === "dark" ? "text-white" : "text-[#005A52]"}`}>
+        <div className={`pb-16 ${theme === "dark" ? "bg-[#0f1b28]" : "bg-[#F6F4F1]"}`}>
+            {/* Dynamic Heading */}
+            <div className="text-center py-10">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold fontRokkitt">
+                <span className={`${theme === "dark" ? "text-white" : "text-[#005A52]"}`}>
                     <Typewriter
-                        words={[`${likeCount} people interested in this recipe`]}
-                        loop={Infinity} 
-                        cursor
-                        cursorStyle='||'
-                        typeSpeed={70}
-                        deleteSpeed={50}
-                        delaySpeed={1000}
+                    words={[`${likeCount} people interested in this recipe`]}
+                    loop={Infinity}
+                    cursor
+                    cursorStyle="||"
+                    typeSpeed={70}
+                    deleteSpeed={50}
+                    delaySpeed={1000}
                     />
-                    </span>
+                </span>
                 </h1>
+            </div>
+
+            {/* Main Content Container */}
+            <div className={`w-11/12 sm:w-9/12 mx-auto rounded-2xl p-6 sm:p-12 2xl:flex 2xl:gap-8 ${theme === "dark" ? "bg-gray-800" : "bg-[#D0E5E0]"}`}>
+                
+                {/* Recipe Image */}
+                <div className="2xl:w-[600px]">
+                <img
+                    className="w-full h-[225px] sm:h-[400px] object-cover rounded-xl shadow-md"
+                    src={recipe.photo || "https://res.cloudinary.com/dd4np04jl/image/upload/v1748093770/placeholder_ji3q5g.jpg"}
+                    alt="Recipe"
+                />
                 </div>
-            <div className={`w-11/12 sm:w-9/12  mx-auto 2xl:flex 2xl:justify-between  rounded-2xl p-6 sm:p-16 ${theme === "dark" ? "bg-gray-800" : "bg-[#D0E5E0]"}`}>
-                <div>
-                    <img className='w-full 2xl:w-[600px] h-[225px] sm:h-[400px] rounded-xl' src={recipe.photo || "https://res.cloudinary.com/dd4np04jl/image/upload/v1748093770/placeholder_ji3q5g.jpg"} alt="" />
+
+                {/* Recipe Details */}
+                <div className="flex-1 mt-6 2xl:mt-0 flex flex-col gap-6">
+
+                {/* Ingredients & Instructions */}
+                <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
+                    <div className={`p-6 rounded-xl shadow-sm ${theme === "dark" ? "bg-[#0f1b28] text-white" : "bg-white text-black"}`}>
+                    <h2 className="text-xl font-semibold mb-2"> Ingredients</h2>
+                    <p>{recipe.ingredients}</p>
+                    </div>
+                    <div className={`p-6 rounded-xl shadow-sm ${theme === "dark" ? "bg-[#0f1b28] text-white" : "bg-white text-black"}`}>
+                    <h2 className="text-xl font-semibold mb-2"> Instructions</h2>
+                    <p>{recipe.instructions}</p>
+                    </div>
                 </div>
-                <div className='2xl:flex justify-center items-center gap-8'>
+
+                {/* Metadata Section */}
+                <div className={`p-6 rounded-xl shadow-sm flex flex-wrap justify-between gap-4 ${theme === "dark" ? "bg-[#0f1b28] text-white" : "bg-white text-black"}`}>
                     <div>
-                        
-                        <div className='flex flex-col gap-2 sm:gap-6 mt-2 sm:mt-6 2xl:w-[350px] 2xl:ml-4'>
-                        <div className={` p-8 rounded-xl ${theme === "dark" ? "bg-[#0f1b28]" : "bg-white"}`}>
-                            <h1 className=' text-lg font-bold'>Ingredients</h1>
-                            <p>{recipe.ingredients}</p>
-                        </div>
-                        <div className={` p-8 rounded-xl ${theme === "dark" ? "bg-[#0f1b28]" : "bg-white"}`}>
-                            <h1 className=' text-lg font-bold'>Instructions</h1>
-                            <p>{recipe.instructions}</p>
-                        </div>
+                    <h3 className="font-semibold"> Cuisine Type</h3>
+                    <p>{recipe.cuisine}</p>
                     </div>
+                    <div>
+                    <h3 className="font-semibold">⏱ Preparation Time</h3>
+                    <p>{recipe.preparation_time} minutes</p>
                     </div>
-                        <div className={` py-4 px-8 rounded-xl flex justify-between flex-wrap 2xl:flex-col mt-2 sm:mt-6  gap-3 ${theme === "dark" ? "bg-[#0f1b28]" : "bg-white"}`}>
-                            <div>
-                                <h1 className=' text-lg font-bold'>Cuisine Type</h1>
-                                <p>{ recipe.cuisine}</p>
-                            </div>
-                            <div>
-                                <h1 className=' text-lg font-bold'>Preparation Time</h1>
-                                <p>{ recipe.preparation_time} minute</p>
-                            </div>
-                            <div>
-                                <h1 className=' text-lg font-bold'>Categories</h1>
-                                <ul>
-                                    {
-                                        recipe.categories.map((cat, index) => <li key={index}>{ cat}</li>)
-                                    }
-                                </ul>
-                            </div>
-                            <div>
-                                <h1 className=' text-lg font-bold'>Like Count</h1>
-                                <p className='text-[#005A52] flex items-center gap-2.5'><FaHeart /> <span className=''>{ likeCount}</span></p>
-                            </div>
-                        
-                            <div className=' hidden 2xl:block'>
-                                <button onClick={handleLikeButton} className={`btn w-full  hover:bg-[#005A52] hover:text-white flex items-center justify-center gap-2 ${theme === "dark" ? "border border-[#56c9c1] text-[#56c9c1]" : "text-[#005A52]"}`}>Like <FaHeart /></button>
-                            </div>
-                        </div>
-                            <div className='mt-2 sm:mt-6 block 2xl:hidden'>
-                                <button onClick={handleLikeButton} className={`btn w-full  hover:bg-[#005A52] hover:text-white flex items-center justify-center gap-2 ${theme === "dark" ? "border border-[#56c9c1] text-[#56c9c1]" : "text-[#005A52]"}`}>Like <FaHeart /></button>
-                            </div>
+                    <div>
+                    <h3 className="font-semibold"> Categories</h3>
+                    <ul className="list-disc list-inside">
+                        {recipe.categories.map((cat, index) => (
+                        <li key={index}>{cat}</li>
+                        ))}
+                    </ul>
+                    </div>
+                    <div>
+                    <h3 className="font-semibold"> Like Count</h3>
+                    <p className="flex items-center gap-2 text-[#005A52]">
+                        <FaHeart /> {likeCount}
+                    </p>
+                    </div>
+                </div>
+
+                {/* Like Button */}
+                <div className="mt-4 w-full">
+                    <button
+                    onClick={handleLikeButton}
+                    className={`btn w-full  px-6 py-2 text-lg font-semibold rounded-xl transition-all duration-300 ease-in-out hover:bg-[#005A52] hover:text-white flex items-center justify-center gap-2 ${theme === "dark" ? "border border-[#56c9c1] text-[#56c9c1]" : "text-[#005A52]"}`}
+                    >
+                    Like <FaHeart />
+                    </button>
+                </div>
                 </div>
             </div>
-        </div>
+            </div>
+
     );
 };
 
