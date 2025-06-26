@@ -102,10 +102,10 @@ const Navbar = () => {
           <ul className="menu menu-horizontal flex gap-6 px-1">{links}</ul>
         </div>
 
-        <div className="navbar-end flex items-center gap-3">
+        <div className="navbar-end flex items-center gap-5">
           <div className="dropdown dropdown-bottom sm:dropdown-left bg-none">
-            <div tabIndex={0} role="button" className="btn btn-sm md:btn-md md:text-xl">
-              {theme === 'dark' ? <PiMoonStarsFill /> : <MdSunny />}
+            <div tabIndex={0} role="button" className=" md:text-2xl">
+              {theme === 'dark' ? <PiMoonStarsFill className='cursor-pointer' /> : <MdSunny className='cursor-pointer' />}
             </div>
             <ul tabIndex={0} className="dropdown-content menu gap-1 rounded-box z-1 w-fit md:w-56">
               <li onClick={() => handleThemeToggle('light')} className="bg-white text-black w-[100px] md:w-full">
@@ -122,8 +122,8 @@ const Navbar = () => {
               <div className="dropdown dropdown-left">
                 <div tabIndex={0} role="button" className="m-1">
                   <div className="avatar">
-                    <div className="w-9 md:w-16 rounded-full">
-                      <img src={user ? user?.photoURL : photo} />
+                    <div className="w-9 md:w-12 rounded-full">
+                      <img className='cursor-pointer' src={user ? user?.photoURL : photo} />
                     </div>
                   </div>
                 </div>

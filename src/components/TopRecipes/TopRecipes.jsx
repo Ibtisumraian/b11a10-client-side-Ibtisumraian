@@ -12,7 +12,7 @@ const TopRecipes = ({ topRecipes }) => {
     return (
         <div className='w-9/12 lg:w-11/12 mx-auto '>
             <div className='text-center my-10'>
-                <h1 className={`text-3xl sm:text-5xl font-bold fontRokkitt ${theme == "dark" && "text-[#56c9c1]"}`}>Top Recipes</h1>
+                <h1 className={`text-3xl sm:text-5xl text-gray-600 font-bold fontRokkitt ${theme == "dark" && "text-[#56c9c1]"}`}>Top Recipes</h1>
             </div>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
 
