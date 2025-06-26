@@ -42,8 +42,8 @@ const Navbar = () => {
         
         <NavLink className="text-white text-lg" to='/'>Home</NavLink>
         <NavLink className="text-white text-lg" to='/AllRecipes'>All Recipes</NavLink>
-        <NavLink className="text-white text-lg" to='/aboutUs'>About Us</NavLink>
-        <NavLink className="text-white text-lg" to='/MyRecipes'>Contact</NavLink>
+        <NavLink className="text-white text-lg" to='/AboutUs'>About Us</NavLink>
+        <NavLink className="text-white text-lg" to='/ContactUs'>Contact</NavLink>
         <NavLink className="text-white text-lg" to='/MyRecipes'>Support</NavLink>
         {/* <NavLink className="text-white text-lg" to='/AddRecipes'>Add Recipes</NavLink>
         <NavLink className="text-white text-lg" to='/MyRecipes'>My Recipes</NavLink> */}

@@ -10,6 +10,7 @@ import RecipeDetails from "../components/RecipeDetails/RecipeDetails";
 import MyRecipes from "../components/MyRecipes/MyRecipes";
 import PageNotFound from "../components/PageNotFound/PageNotFound";
 import AboutUs from "../components/AboutUs/AboutUs";
+import ContactUs from "../components/ContactUs/ContactUs";
 
 export const router = createBrowserRouter([
   {
@@ -23,8 +24,13 @@ export const router = createBrowserRouter([
             Component: Home
         },
         {
-            path: '/aboutUs',
+            path: '/AboutUs',
             Component: AboutUs
+
+        },
+        {
+            path: '/ContactUs',
+            Component: ContactUs
 
         },
         {
