@@ -39,7 +39,7 @@ const AddRecipes = () => {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            className={`w-full max-w-5xl mx-auto px-4 py-16 rounded-2xl shadow-lg ${
+            className={`w-full max-w-5xl mx-auto px-4 py-16 rounded-2xl shadow-lg mt-8 ${
                 theme === "dark" ? "bg-gray-800 text-white" : "bg-[#D0E5E0] text-black"
             }`}
             >

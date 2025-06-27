@@ -3,6 +3,7 @@ import { FaHeart } from 'react-icons/fa';
 import { useLoaderData, useNavigate } from 'react-router';
 import { AuthContext } from '../../components/AuthContext/AuthContext';
 import { motion } from 'framer-motion';
+import { MdOutlineArrowDropDown } from 'react-icons/md';
 
 const AllRecipes = () => {
     const { theme } = use(AuthContext)
@@ -32,14 +33,28 @@ const AllRecipes = () => {
         
     }
 
+    const handleMostLike = () => {
+        fetch('https://recipe-book-server-six.vercel.app/Ascending')
+        .then(res=>res.json())
+        .then(data=>setRecipes(data))
+        
+    }
+
+    const handleLessLike = () => {
+        fetch('https://recipe-book-server-six.vercel.app/Descending')
+        .then(res=>res.json())
+        .then(data=>setRecipes(data))
+    }
+
 
     return (
         <div className='pb-32 pt-16'>
             <div className='text-center py-10'>
                 <h1 className='text-5xl font-bold fontRokkitt'>All Recipes</h1>
             </div>
-            <div className='w-11/12 mx-auto mb-10'>
-                <select onChange={handleRecipeCategories} defaultValue="Pick a color" className="select w-full sm:w-[320px]">
+            <div className='w-11/12 mx-auto mb-10 flex items-center gap-6'>
+                <div>
+                    <select onChange={handleRecipeCategories} defaultValue="Pick a color" className="select w-full sm:w-[190px]">
                     <option disabled>Cuisine Type</option>
                     <option>All</option>
                     <option>American</option>
@@ -48,6 +63,18 @@ const AllRecipes = () => {
                     <option>Chinese</option>
                     <option>Indian</option>
                 </select>
+                </div>
+
+                <div>
+                    <div className="dropdown dropdowns-start">
+                        <div tabIndex={0} role="button" className="w-full sm:w-[190px] border border-gray-300 py-2 px-3 text-sm rounded-sm hover:cursor-pointer m-1 flex justify-between items-center gap-3">Sort Recipes <MdOutlineArrowDropDown className='text-lg' /></div>
+                        <ul tabIndex={0} className="dropdown-content border border-white menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
+                            <li onClick={()=>setRecipes(initialRecipes)}><a>All</a></li>
+                            <li onClick={handleMostLike}><a>Sort by most liked</a></li>
+                            <li onClick={handleLessLike}><a>Sort by less liked</a></li>
+                        </ul>
+                        </div>
+                </div>
             </div>
             <div className=' w-11/12 mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 2xl:grid-cols-4 gap-4'>
             {
