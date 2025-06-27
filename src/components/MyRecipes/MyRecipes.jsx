@@ -3,6 +3,7 @@ import { AuthContext } from '../AuthContext/AuthContext';
 import { FaHeart, FaRegHeart } from 'react-icons/fa';
 import { MdDelete, MdEdit } from 'react-icons/md';
 import Swal from 'sweetalert2';
+import { Link } from 'react-router';
 
 const MyRecipes = () => {
     const { user, theme } = use(AuthContext)
@@ -99,102 +100,127 @@ const MyRecipes = () => {
         });
     }
     return (
-        <div className={` flex flex-col gap-8 ${theme === "dark" ? "bg-[#0f1b28]" : "bg-[#F6F4F1]"}`}>
+        <div className={` flex flex-col gap-8 min-h-screen ${theme === "dark" ? "bg-[#0f1b28]" : "bg-[#F6F4F1]"}`}>
             <div className='text-center pt-12'>
                 <h1 className='text-5xl font-bold fontRokkitt'>My Recipes</h1>
             </div>
-            {
+            
+                {recipes.length === 0 ? (
+                <div
+                    className={`flex flex-col items-center justify-center py-20 mx-auto max-w-lg rounded-xl shadow-lg ${
+                    theme === 'dark' ? 'bg-gray-800 text-white' : 'bg-white text-gray-900'
+                    }`}
+                >
+                    <img
+                    src="https://cdn-icons-png.flaticon.com/512/4076/4076549.png" // cute empty box icon
+                    alt="No recipes"
+                    className="w-24 h-24 mb-6 opacity-70"
+                    />
+                    <h2 className="text-2xl font-semibold mb-2">No Recipes Found</h2>
+                    <p className="text-center max-w-xs text-gray-500 mb-6">
+                    You haven't added any recipes yet. Start adding some delicious recipes to see them here!
+                    </p>
+                    <Link to='/DashboardRoute/AddRecipes'><button
+                    onClick={() => {/* your add recipe logic or navigation here */}}
+                    className="btn bg-[#56c9c1] hover:bg-[#3ea6a1] text-white px-6 py-3 rounded-xl shadow-lg transition"
+                    >
+                    Add Your First Recipe
+                    </button></Link>
+                </div>
+                ) : (
                 recipes.map(recipe => {
-                    return <div
-                            key={recipe._id}
-                            className={`w-11/12 sm:w-9/12 mb-12 mx-auto rounded-2xl p-6 sm:p-12 2xl:flex 2xl:gap-8 shadow-lg ${
-                                theme === "dark" ? "bg-gray-800" : "bg-[#D0E5E0]"
+                    return (
+                    <div
+                        key={recipe._id}
+                        className={`w-full max-w-6xl mx-auto mb-12 rounded-2xl p-6 sm:p-8 lg:p-12 flex flex-col xl:flex-row gap-6 shadow-lg ${
+                        theme === 'dark' ? 'bg-gray-800' : 'bg-[#D0E5E0]'
+                        }`}
+                    >
+                        {/* Left Side - Image */}
+                        <div className="w-full xl:w-[40%] flex justify-center items-center">
+                        <img
+                            className="w-full h-48 sm:h-64 md:h-full object-cover rounded-xl shadow-md"
+                            src={
+                            recipe.photo ||
+                            'https://res.cloudinary.com/dd4np04jl/image/upload/v1748093770/placeholder_ji3q5g.jpg'
+                            }
+                            alt="Recipe"
+                        />
+                        </div>
+
+                        {/* Right Side - Content */}
+                        <div className="flex-1 flex flex-col justify-between gap-6">
+                        {/* Ingredients & Instructions */}
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div
+                            className={`p-4 sm:p-6 rounded-xl shadow-sm ${
+                                theme === 'dark' ? 'bg-[#0f1b28] text-white' : 'bg-white text-black'
                             }`}
                             >
-                            {/* Left Side - Image */}
-                            <div className="2xl:w-[600px] flex justify-center items-center">
-                                <img
-                                className="w-full h-[225px] sm:h-[400px] object-cover rounded-xl shadow-md"
-                                src={
-                                    recipe.photo ||
-                                    "https://res.cloudinary.com/dd4np04jl/image/upload/v1748093770/placeholder_ji3q5g.jpg"
-                                }
-                                alt="Recipe"
-                                />
+                            <h2 className="text-lg font-semibold mb-2">Ingredients</h2>
+                            <p className="text-sm sm:text-base">{recipe.ingredients}</p>
                             </div>
-
-                            {/* Right Side - Content */}
-                            <div className="flex-1 mt-6 2xl:mt-0 flex flex-col gap-6">
-                                {/* Ingredients & Instructions */}
-                                <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
-                                <div
-                                    className={`p-6 rounded-xl shadow-sm ${
-                                    theme === "dark" ? "bg-[#0f1b28] text-white" : "bg-white text-black"
-                                    }`}
-                                >
-                                    <h2 className="text-lg font-semibold mb-2"> Ingredients</h2>
-                                    <p className="text-sm sm:text-base">{recipe.ingredients}</p>
-                                </div>
-                                <div
-                                    className={`p-6 rounded-xl shadow-sm ${
-                                    theme === "dark" ? "bg-[#0f1b28] text-white" : "bg-white text-black"
-                                    }`}
-                                >
-                                    <h2 className="text-lg font-semibold mb-2"> Instructions</h2>
-                                    <p className="text-sm sm:text-base">{recipe.instructions}</p>
-                                </div>
-                                </div>
-
-                                {/* Meta Info */}
-                                <div
-                                className={`p-6 rounded-xl shadow-sm flex flex-wrap justify-between gap-4 ${
-                                    theme === "dark" ? "bg-[#0f1b28] text-white" : "bg-white text-black"
-                                }`}
-                                >
-                                <div>
-                                    <h3 className="text-sm sm:text-lg font-semibold">Cuisine Type</h3>
-                                    <p className="text-sm sm:text-base">{recipe.cuisine}</p>
-                                </div>
-                                <div>
-                                    <h3 className="text-sm sm:text-lg font-semibold"> Preparation Time</h3>
-                                    <p className="text-sm sm:text-base">{recipe.preparation_time} minute</p>
-                                </div>
-                                <div>
-                                    <h3 className="text-sm sm:text-lg font-semibold"> Categories</h3>
-                                    <ul className="text-sm sm:text-base list-disc list-inside">
-                                    {recipe.categories.map((cat, index) => (
-                                        <li key={index}>{cat}</li>
-                                    ))}
-                                    </ul>
-                                </div>
-                                <div>
-                                    <h3 className="text-sm sm:text-lg font-semibold"> Like Count</h3>
-                                    <p className="text-[#005A52] flex items-center gap-2.5">
-                                    <FaHeart /> <span>{recipe.like_count}</span>
-                                    </p>
-                                </div>
-                                </div>
-
-                                {/* Buttons */}
-                                <div className="grid grid-cols-2 gap-4 mt-4 2xl:mt-0 ">
-                                <button
-                                    onClick={() => handleDeleteButton(recipe._id)}
-                                    className="btn bg-[#bbad34] text-white text-xl p-3 rounded-xl shadow hover:scale-105 transition-transform"
-                                >
-                                    <MdDelete />
-                                </button>
-                                <button
-                                    onClick={() => handleEditButton(recipe._id)}
-                                    className="btn bg-[#3C393B] text-white text-xl p-3 rounded-xl shadow hover:scale-105 transition-transform"
-                                >
-                                    <MdEdit />
-                                </button>
-                                </div>
+                            <div
+                            className={`p-4 sm:p-6 rounded-xl shadow-sm ${
+                                theme === 'dark' ? 'bg-[#0f1b28] text-white' : 'bg-white text-black'
+                            }`}
+                            >
+                            <h2 className="text-lg font-semibold mb-2">Instructions</h2>
+                            <p className="text-sm sm:text-base">{recipe.instructions}</p>
                             </div>
-                            </div>
+                        </div>
 
+                        {/* Meta Info */}
+                        <div
+                            className={`p-4 sm:p-6 rounded-xl shadow-sm grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 ${
+                            theme === 'dark' ? 'bg-[#0f1b28] text-white' : 'bg-white text-black'
+                            }`}
+                        >
+                            <div>
+                            <h3 className="text-sm sm:text-lg font-semibold">Cuisine Type</h3>
+                            <p className="text-sm sm:text-base">{recipe.cuisine}</p>
+                            </div>
+                            <div>
+                            <h3 className="text-sm sm:text-lg font-semibold">Prep Time</h3>
+                            <p className="text-sm sm:text-base">{recipe.preparation_time} mins</p>
+                            </div>
+                            <div>
+                            <h3 className="text-sm sm:text-lg font-semibold">Categories</h3>
+                            <ul className="list-disc list-inside text-sm sm:text-base">
+                                {recipe.categories.map((cat, index) => (
+                                <li key={index}>{cat}</li>
+                                ))}
+                            </ul>
+                            </div>
+                            <div>
+                            <h3 className="text-sm sm:text-lg font-semibold">Likes</h3>
+                            <p className="text-[#005A52] flex items-center gap-2.5">
+                                <FaHeart /> <span>{recipe.like_count}</span>
+                            </p>
+                            </div>
+                        </div>
+
+                        {/* Buttons */}
+                        <div className="grid grid-cols-2 gap-4">
+                            <button
+                            onClick={() => handleDeleteButton(recipe._id)}
+                            className="btn bg-[#bbad34] text-white text-xl p-3 rounded-xl shadow hover:scale-105 transition-transform"
+                            >
+                            <MdDelete />
+                            </button>
+                            <button
+                            onClick={() => handleEditButton(recipe._id)}
+                            className="btn bg-[#3C393B] text-white text-xl p-3 rounded-xl shadow hover:scale-105 transition-transform"
+                            >
+                            <MdEdit />
+                            </button>
+                        </div>
+                        </div>
+                    </div>
+                    );
                 })
-            }
+                )}
+  
 
 
             {modal && (
@@ -281,11 +307,15 @@ const MyRecipes = () => {
                         </div>
                       </div>
                         
-                        <div>
+                        <div className=''>
                             <button className='btn w-[250px] sm:w-[350px] my-8'>Update Recipe</button>
+                            
                         </div>
                     </div>                   
-                </form>              
+                </form> 
+                <div>
+                    <button onClick={()=>setModal(false)} className='btn w-[250px] sm:w-[350px] mb-8'>Cancel</button>
+                </div>             
             </div>
         </div>
           </div>

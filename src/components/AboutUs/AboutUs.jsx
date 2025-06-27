@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../AuthContext/AuthContext';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -126,13 +127,13 @@ const AboutUs = () => {
           <p className={`text-lg max-w-2xl mx-auto mb-6 ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
             Share your favorite dishes, discover exciting new recipes, and cook alongside a community that celebrates good food.
           </p>
-          <motion.button
+          <Link to='/AllRecipes'><motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="bg-[#005A52] hover:bg-[#005A5299] text-white px-6 py-3 rounded-full font-medium transition duration-200"
           >
             Explore Recipes
-          </motion.button>
+          </motion.button></Link>
         </motion.div>
 
       </div>

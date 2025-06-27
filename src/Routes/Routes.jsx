@@ -14,6 +14,8 @@ import ContactUs from "../components/ContactUs/ContactUs";
 import Support from "../components/Support/Support";
 import UnderConstruction from "../Pages/UnderConstruction/UnderConstruction";
 import TeamSection from "../components/TeamSection/TeamSection";
+import DashboardRoute from "./DashboardRoute/DashboardRoute";
+import DashboardHome from "../components/DashboardHome/DashboardHome";
 
 export const router = createBrowserRouter([
   {
@@ -46,10 +48,10 @@ export const router = createBrowserRouter([
             Component: TeamSection
 
         },
-        {
-            path: '/AddRecipes',
-            element: <PrivateRoute><AddRecipes></AddRecipes></PrivateRoute>
-        },
+        // {
+        //     path: '/AddRecipes',
+        //     element: <PrivateRoute><AddRecipes></AddRecipes></PrivateRoute>
+        // },
         {
           path: '/AllRecipes',
           hydrateFallbackElement:<div className='  w-[90%] py-40 mx-auto flex justify-center items-center'><span className="loading loading-bars loading-xl"></span></div>,
@@ -62,10 +64,10 @@ export const router = createBrowserRouter([
           loader: ({ params }) => fetch(`https://recipe-book-server-six.vercel.app/recipes/${params.id}`),
           element: <PrivateRoute><RecipeDetails></RecipeDetails></PrivateRoute>
         },
-        {
-          path: '/MyRecipes',
-          element:<PrivateRoute><MyRecipes></MyRecipes></PrivateRoute>
-        },
+        // {
+        //   path: '/MyRecipes',
+        //   element:<PrivateRoute><MyRecipes></MyRecipes></PrivateRoute>
+        // },
         {
           path: '/Signin',
           Component: SignIn
@@ -76,6 +78,25 @@ export const router = createBrowserRouter([
         }
     ]
   },
+{
+  path: '/DashboardRoute',
+  element: <PrivateRoute><DashboardRoute /></PrivateRoute>,
+  children: [
+    {
+      index: true,
+      element: <PrivateRoute><DashboardHome /></PrivateRoute>
+    },
+    {
+      path: 'AddRecipes',
+      element: <PrivateRoute><AddRecipes /></PrivateRoute>
+    },
+    {
+      path: 'MyRecipes',
+      element: <PrivateRoute><MyRecipes /></PrivateRoute>
+    },
+  ]
+  },
+
   {
     path: "*",
     Component: PageNotFound

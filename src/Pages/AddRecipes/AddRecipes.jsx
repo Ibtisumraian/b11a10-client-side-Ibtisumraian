@@ -1,6 +1,7 @@
 import React, { use } from 'react';
 import { AuthContext } from '../../components/AuthContext/AuthContext';
 import Swal from 'sweetalert2';
+import { motion } from "framer-motion";
 
 const AddRecipes = () => {
     const { user, theme } = use(AuthContext);
@@ -34,85 +35,135 @@ const AddRecipes = () => {
         })
     }
     return (
-        <div>
-            <div className={`w-fit mx-auto rounded-2xl my-24 p-6 sm:p-12  ${theme === "dark" ? "bg-gray-800" : "bg-[#D0E5E0]"}`}>
-                <div className='text-center py-8'>
-                    <h1 className='text-4xl sm:text-5xl fontRokkitt font-semibold text-white'>Add Recipes</h1>
+        <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className={`w-full max-w-5xl mx-auto px-4 py-16 rounded-2xl shadow-lg ${
+                theme === "dark" ? "bg-gray-800 text-white" : "bg-[#D0E5E0] text-black"
+            }`}
+            >
+            <motion.h1
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.2 }}
+                className="text-3xl sm:text-4xl fontRokkitt font-semibold text-center mb-10"
+            >
+                Add a New Recipe
+            </motion.h1>
+
+            <form onSubmit={handleAddRecipe} className="space-y-8">
+                {/* Title & URL */}
+                <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.3 }}
+                className="grid sm:grid-cols-2 gap-6"
+                >
+                <div>
+                    <label className="block font-semibold mb-2 text-sm sm:text-base">Title</label>
+                    <input required name="title" type="text" placeholder="Recipe title" className="input w-full" />
                 </div>
-                <form onSubmit={handleAddRecipe} >
-                    <div className=' flex flex-col justify-center items-center'>                        
-                        <div>
-                            <div >
-                            <p className='text-sm sm:text-base font-semibold py-2'>Title</p>
-                            <input required name='title' type="text" placeholder="Title" className="input w-full" />
-                        </div>                      
-                        <div>
-                            <p className='text-sm sm:text-base font-semibold py-2'>URL</p>
-                            <input required name='photo' type="text" placeholder="https://" className="input w-[250px] sm:w-[350px]"  title="Must be valid URL" />
-                        </div> 
-                        </div>  
-                        
-                            <div>
-                                <div>
-                                <p className='text-sm sm:text-base font-semibold py-2'>Ingredients</p>
-                                <textarea required name='ingredients' className="textarea w-[250px] sm:w-[350px]" placeholder="Ingredients"></textarea>
-                            </div>
-                            <div>
-                                <p className='text-sm sm:text-base font-semibold py-2'>Instructions</p>
-                                <textarea required name='instructions' className="textarea w-[250px] sm:w-[350px]" placeholder="Instructions"></textarea>
-                            </div>
-                            </div>
-                            
-                        <div className='w-[250px] sm:w-[350px] flex gap-3'>
-                            <div>
-                            <p className='text-sm sm:text-base font-semibold py-2'>Cuisine</p>
-                            <select required name='cuisine' defaultValue="Select type" className="select w-[120px] sm:w-[170px]">
-                                <option disabled={true}>Select type</option>
-                                <option>American</option>
-                                <option>Italian</option>
-                                <option>Mexican</option>
-                                <option>Indian</option>
-                                <option>Chinese</option>
-                            </select>
-                        </div>
-                        
-                        <div>
-                            <p className='text-sm sm:text-base font-semibold py-2'>Preparation Time</p>
-                            <input required name='preparation_time' type="number" placeholder="Preparation time" className="input w-[120px] sm:w-[170px]" />
-                        </div>
-                        </div>
-                        <div>
-                            <p className='text-sm sm:text-base font-semibold py-2'>Categories </p>
-                            <div className='flex flex-wrap gap-6 w-[250px] sm:w-[350px]'>
-                                <div className='flex items-center gap-2 text-sm sm:text-base'>
-                                    <input  name='categories' type="checkbox" defaultValue='Breakfast'  className="checkbox" />Breakfast
-                                </div>
-                                <div className='flex items-center gap-2 text-sm sm:text-base'>
-                                 <input name='categories' type="checkbox" defaultValue='Lunch' className="checkbox" />Lunch     
-                                </div>
-                                <div className='flex items-center gap-2 text-sm sm:text-base'>
-                                    <input name='categories' type="checkbox" defaultValue='Dinner' className="checkbox" />Dinner
-                                </div>
-                                <div className='flex items-center gap-2 text-sm sm:text-base'>
-                                    <input name='categories' type="checkbox" defaultValue='Dessert' className="checkbox" />Dessert
-                                </div>
-                                <div className='flex items-center gap-2 text-sm sm:text-base'>
-                                    <input name='categories' type="checkbox" defaultValue='Vegan' className="checkbox" />Vegan
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <p className='text-sm sm:text-base font-semibold py-2'>Like Count</p>
-                            <input required name='like_count' type="number" value={0} placeholder="" className="input w-[250px] sm:w-[350px]" />
-                        </div>
-                        
-                        <div>
-                            <button className='btn w-[250px] sm:w-[350px] my-8'>Add Recipe</button>
-                        </div>
-                    </div>                   
-                </form>              
-            </div>
-        </div>
+                <div>
+                    <label className="block font-semibold mb-2 text-sm sm:text-base">Image URL</label>
+                    <input required name="photo" type="url" placeholder="https://image-link" className="input w-full" />
+                </div>
+                </motion.div>
+
+                {/* Ingredients & Instructions */}
+                <motion.div
+                initial={{ opacity: 0, x: 30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.4 }}
+                className="grid sm:grid-cols-2 gap-6"
+                >
+                <div>
+                    <label className="block font-semibold mb-2 text-sm sm:text-base">Ingredients</label>
+                    <textarea required name="ingredients" rows={4} className="textarea w-full" />
+                </div>
+                <div>
+                    <label className="block font-semibold mb-2 text-sm sm:text-base">Instructions</label>
+                    <textarea required name="instructions" rows={4} className="textarea w-full" />
+                </div>
+                </motion.div>
+
+                {/* Cuisine & Time */}
+                <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.5 }}
+                className="grid sm:grid-cols-2 gap-6"
+                >
+                <div>
+                    <label className="block font-semibold mb-2 text-sm sm:text-base">Cuisine Type</label>
+                    <select required name="cuisine" defaultValue="Select type" className="select w-full">
+                    <option disabled>Select type</option>
+                    <option>American</option>
+                    <option>Italian</option>
+                    <option>Mexican</option>
+                    <option>Indian</option>
+                    <option>Chinese</option>
+                    </select>
+                </div>
+                <div>
+                    <label className="block font-semibold mb-2 text-sm sm:text-base">Preparation Time</label>
+                    <input required name="preparation_time" type="number"  className="input w-full" />
+                </div>
+                </motion.div>
+
+                {/* Categories */}
+                <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.6 }}
+                >
+                <label className="block font-semibold mb-2 text-sm sm:text-base">Categories</label>
+                <div className="flex flex-wrap gap-4">
+                    {['Breakfast', 'Lunch', 'Dinner', 'Dessert', 'Vegan'].map((cat) => (
+                    <label key={cat} className="flex items-center gap-2 text-sm sm:text-base">
+                        <input name="categories" type="checkbox" defaultValue={cat} className="checkbox" />
+                        {cat}
+                    </label>
+                    ))}
+                </div>
+                </motion.div>
+
+                {/* Like Count */}
+                <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.7 }}
+                >
+                <label className="block font-semibold mb-2 text-sm sm:text-base">Like Count</label>
+                <input
+                    required
+                    name="like_count"
+                    type="number"
+                    value={0}
+                    readOnly
+                    className="input w-full"
+                />
+                </motion.div>
+
+                {/* Button */}
+                <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.8 }}
+                className="text-center"
+                >
+                <button
+                    type="submit"
+                    className={`btn w-full sm:w-[300px] mt-4 ${
+                    theme === 'dark' ? 'bg-[#56c9c1] text-black' : 'bg-[#005A52] text-white'
+                    }`}
+                >
+                    Add Recipe
+                </button>
+                </motion.div>
+            </form>
+            </motion.div>
+
     );
 };
 

@@ -55,6 +55,9 @@ const Navbar = () => {
       <NavLink className="text-white text-lg" to="/Support">
         Support
       </NavLink>
+      <NavLink className="text-white text-lg" to="/DashboardRoute">
+        Dashboard
+      </NavLink>
     </>
   );
 
