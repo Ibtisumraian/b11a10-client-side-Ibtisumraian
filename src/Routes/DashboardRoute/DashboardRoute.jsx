@@ -1,40 +1,56 @@
+import { signOut } from 'firebase/auth';
 import React from 'react';
+import { IoIosLogOut } from 'react-icons/io';
 import { Link, NavLink, Outlet } from 'react-router';
+import { auth } from '../../components/firebase/firebase.init';
+import { Bounce, toast } from 'react-toastify';
+import { GoHome } from 'react-icons/go';
+import { MdOutlineAddComment, MdOutlineDashboard } from 'react-icons/md';
+import { CiUser } from 'react-icons/ci';
+import { FaRegUser } from 'react-icons/fa';
+import { PiCookingPotBold } from 'react-icons/pi';
+import { IoLogOutOutline } from 'react-icons/io5';
 
 const DashboardRoute = () => {
+
+    const handleSignOut = () => {
+    signOut(auth)
+      .then(() => {
+        toast.success('Sign Out Successful!', {
+          position: 'top-left',
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: false,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: 'colored',
+          transition: Bounce,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <div className="flex h-screen overflow-hidden">
       {/* Sidebar */}
       <aside className="w-64 bg-base-200 sticky top-0 h-screen hidden lg:flex flex-col p-4">
         <h2 className="text-xl font-bold mb-4">Dashboard</h2>
-        <ul className="menu space-y-2">
-          <Link to='/'><li>Home</li></Link>
-          <Link to='/DashboardRoute'><li>Dashboard Home</li></Link>
-          <Link to='MyRecipes'><li>My Recipes</li></Link>
-          <Link to='AddRecipes'><li>Add Recipes</li></Link>
-          <Link to='/gg'><li>Logout</li></Link>
+        <ul className="menu space-y-2 flex flex-col gap-3 text-lg">
+          <Link to='/'><h1 className='flex items-center gap-3'><GoHome />Home</h1></Link>
+          <Link to='/DashboardRoute'><h1 className='flex items-center gap-3'><MdOutlineDashboard />Dashboard Home</h1></Link>
+          <Link to='UserProfile'><h1 className='flex items-center gap-3'><FaRegUser />User Profile</h1></Link>
+          <Link to='MyRecipes'><h1 className='flex items-center gap-3'><PiCookingPotBold />My Recipes</h1></Link>
+          <Link to='AddRecipes'><h1 className='flex items-center gap-3'><MdOutlineAddComment />Add Recipes</h1></Link>
+          <h1 onClick={handleSignOut} className='mt-16 flex items-center gap-3 cursor-pointer w-fit'><IoLogOutOutline />Logout</h1>
           
           {/* <li><a>Settings</a></li> */}
           
         </ul>
       </aside>
-
-      {/* Drawer for mobile */}
-      {/* <div className="lg:hidden fixed top-4 left-4 z-50">
-        <label htmlFor="drawer-toggle" className="btn btn-primary">☰</label>
-      </div>
-      <input id="drawer-toggle" type="checkbox" className="drawer-toggle hidden" />
-      <div className="drawer-side lg:hidden fixed z-40">
-        <label htmlFor="drawer-toggle" className="drawer-overlay"></label>
-        <ul className="menu p-4 w-64 bg-base-200 min-h-full space-y-2">
-          <li><a>Dashboard Home</a></li>
-          <li><a>My Recipes</a></li>
-          <li><a>Settings</a></li>
-          <li><a>Logout</a></li>
-        </ul>
-      </div> */}
       
-
       {/* Main Content (scrollable) */}
       <main className="flex-1 overflow-y-auto p-4">
 
@@ -75,13 +91,14 @@ const DashboardRoute = () => {
               </div>
               <div className="drawer-side">
                 <label htmlFor="my-drawer-3" aria-label="close sidebar" className="drawer-overlay"></label>
-                <ul className="menu bg-base-200 min-h-full w-80 p-4 flex flex-col gap-4">
+                <ul className="menu bg-base-200 min-h-full w-60 p-4 flex flex-col gap-4">
                   {/* Sidebar content here */}
-                  <Link to='/'><li>Home</li></Link>
-                  <Link to='/DashboardRoute'><li>Dashboard Home</li></Link>
-                  <Link to='MyRecipes'><li>My Recipes</li></Link>
-                  <Link to='AddRecipes'><li>Add Recipes</li></Link>
-                  <Link to='/gg'><li>Logout</li></Link>
+                  <Link to='/'><h1 className='flex items-center gap-3'><GoHome />Home</h1></Link>
+                  <Link to='/DashboardRoute'><h1 className='flex items-center gap-3'><MdOutlineDashboard />Dashboard Home</h1></Link>
+                  <Link to='UserProfile'><h1 className='flex items-center gap-3'><FaRegUser />User Profile</h1></Link>
+                  <Link to='MyRecipes'><h1 className='flex items-center gap-3'><PiCookingPotBold />My Recipes</h1></Link>
+                  <Link to='AddRecipes'><h1 className='flex items-center gap-3'><MdOutlineAddComment />Add Recipes</h1></Link>
+                  <h1 onClick={handleSignOut} className='mt-16 flex items-center gap-3 cursor-pointer w-fit'><IoLogOutOutline />Logout</h1>
                 </ul>
               </div>
             </div>

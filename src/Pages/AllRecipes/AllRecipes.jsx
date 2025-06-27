@@ -34,14 +34,14 @@ const AllRecipes = () => {
     }
 
     const handleMostLike = () => {
-        fetch('https://recipe-book-server-six.vercel.app/Ascending')
+        fetch('https://recipe-book-server-six.vercel.app/Descending')
         .then(res=>res.json())
         .then(data=>setRecipes(data))
         
     }
 
     const handleLessLike = () => {
-        fetch('https://recipe-book-server-six.vercel.app/Descending')
+        fetch('https://recipe-book-server-six.vercel.app/Ascending')
         .then(res=>res.json())
         .then(data=>setRecipes(data))
     }
@@ -67,11 +67,11 @@ const AllRecipes = () => {
 
                 <div>
                     <div className="dropdown dropdowns-start">
-                        <div tabIndex={0} role="button" className="w-full sm:w-[190px] border border-gray-300 py-2 px-3 text-sm rounded-sm hover:cursor-pointer m-1 flex justify-between items-center gap-3">Sort Recipes <MdOutlineArrowDropDown className='text-lg' /></div>
+                        <div tabIndex={0} role="button" className="w-full sm:max-w-[190px] border border-gray-300 py-2 px-3 text-sm rounded-sm hover:cursor-pointer m-1 flex justify-between items-center gap-1 sm:gap-3">Sort Recipes <MdOutlineArrowDropDown className='text-lg' /></div>
                         <ul tabIndex={0} className="dropdown-content border border-white menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
                             <li onClick={()=>setRecipes(initialRecipes)}><a>All</a></li>
-                            <li onClick={handleMostLike}><a>Sort by most liked</a></li>
-                            <li onClick={handleLessLike}><a>Sort by less liked</a></li>
+                            <li onClick={handleMostLike}><a>Sort by most likes</a></li>
+                            <li onClick={handleLessLike}><a>Sort by least likes</a></li>
                         </ul>
                         </div>
                 </div>

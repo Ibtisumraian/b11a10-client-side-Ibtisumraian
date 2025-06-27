@@ -16,6 +16,7 @@ import UnderConstruction from "../Pages/UnderConstruction/UnderConstruction";
 import TeamSection from "../components/TeamSection/TeamSection";
 import DashboardRoute from "./DashboardRoute/DashboardRoute";
 import DashboardHome from "../components/DashboardHome/DashboardHome";
+import UserProfile from "../components/UserProfile/UserProfile";
 
 export const router = createBrowserRouter([
   {
@@ -64,10 +65,6 @@ export const router = createBrowserRouter([
           loader: ({ params }) => fetch(`https://recipe-book-server-six.vercel.app/recipes/${params.id}`),
           element: <PrivateRoute><RecipeDetails></RecipeDetails></PrivateRoute>
         },
-        // {
-        //   path: '/MyRecipes',
-        //   element:<PrivateRoute><MyRecipes></MyRecipes></PrivateRoute>
-        // },
         {
           path: '/Signin',
           Component: SignIn
@@ -94,6 +91,11 @@ export const router = createBrowserRouter([
       path: 'MyRecipes',
       element: <PrivateRoute><MyRecipes /></PrivateRoute>
     },
+    {
+      path: 'UserProfile',
+      element:<PrivateRoute><UserProfile/></PrivateRoute>
+    },
+    
   ]
   },
 

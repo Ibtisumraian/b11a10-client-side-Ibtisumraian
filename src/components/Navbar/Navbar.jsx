@@ -1,5 +1,5 @@
 import React, { use } from 'react';
-import { NavLink } from 'react-router';
+import { Link, NavLink, useNavigate } from 'react-router';
 import { AuthContext } from '../AuthContext/AuthContext';
 import { signOut } from 'firebase/auth';
 import { auth } from '../firebase/firebase.init';
@@ -10,6 +10,7 @@ import { PiMoonStarsFill } from 'react-icons/pi';
 
 const Navbar = () => {
   const { user, theme, setTheme, photo } = use(AuthContext);
+  const navigate = useNavigate()
 
   const handleSignOut = () => {
     signOut(auth)
@@ -121,29 +122,24 @@ const Navbar = () => {
           </div>
 
           {user ? (
-            <div className="flex gap-2">
+            <div onClick={() => navigate('/DashboardRoute/UserProfile')} className="flex gap-2">
               <div className="dropdown dropdown-left">
                 <div tabIndex={0} role="button" className="m-1">
-                  <div className="avatar">
-                    <div className="w-9 md:w-12 rounded-full">
-                      <img className='cursor-pointer' src={user ? user?.photoURL : photo} />
+                  <div
+                    className="avatar tooltip tooltip-bottom"
+                    data-tip={user?.displayName || "Guest User"}
+                  >
+                    <div className="w-9 md:w-12 rounded-full ring ring-[#56c9c1] ring-offset-2">
+                      <Link>
+                        <img
+                          className="cursor-pointer"
+                          src={user ? user.photoURL : photo}
+                          alt="User Avatar"
+                        />
+                      </Link>
                     </div>
                   </div>
                 </div>
-                <ul
-                  tabIndex={0}
-                  className="dropdown-content menu bg-base-100 rounded-box z-1 w-40 sm:w-52 p-2 shadow-sm"
-                >
-                  <li className="font-semibold my-2">{user.displayName}</li>
-                  <button
-                    onClick={handleSignOut}
-                    className={`btn btn-sm text-[#1C2B4A] hover:bg-[#005A52] hover:text-white ${
-                      theme === 'dark' ? 'border border-[#56c9c1] text-[#56c9c1]' : ''
-                    }`}
-                  >
-                    Sign Out
-                  </button>
-                </ul>
               </div>
             </div>
           ) : (
