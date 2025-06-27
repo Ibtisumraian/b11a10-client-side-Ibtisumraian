@@ -110,13 +110,13 @@ const ContactUs = () => {
           animate="visible"
           transition={{ delay: 0.6 }}
         >
-          <h3 className="text-3xl font-bold mb-3">Got a Secret Recipe? 👩‍🍳</h3>
+          <h3 className="text-3xl font-bold mb-3">Got a Secret Recipe? </h3>
           <p className="text-lg mb-6 max-w-xl mx-auto">
             Send it our way — or let’s collaborate on something delicious together.
           </p>
           <div
             className={`inline-block font-semibold px-6 py-3 rounded-full transition duration-200
-            ${isDark ? 'bg-green-900/20 text-green-300' : 'bg-[#FFF5D9] text-[#005A52]'}`}
+            ${isDark ? 'bg-green-900/20 text-green-300' : 'bg-[#E0F4F2] text-[#005A52]'}`}
           >
             Email Us Now <br />
             recipebook@email.com

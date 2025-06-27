@@ -40,7 +40,7 @@ const DashboardRoute = () => {
         <h2 className="text-xl font-bold mb-4">Dashboard</h2>
         <ul className="menu space-y-2 flex flex-col gap-3 text-lg">
           <Link to='/'><h1 className='flex items-center gap-3'><GoHome />Home</h1></Link>
-          <Link to='/DashboardRoute'><h1 className='flex items-center gap-3'><MdOutlineDashboard />Dashboard Home</h1></Link>
+          <Link to='/DashboardRoute'><h1 className='flex items-center gap-3'><MdOutlineDashboard />Overview</h1></Link>
           <Link to='UserProfile'><h1 className='flex items-center gap-3'><FaRegUser />User Profile</h1></Link>
           <Link to='MyRecipes'><h1 className='flex items-center gap-3'><PiCookingPotBold />My Recipes</h1></Link>
           <Link to='AddRecipes'><h1 className='flex items-center gap-3'><MdOutlineAddComment />Add Recipes</h1></Link>
@@ -94,7 +94,7 @@ const DashboardRoute = () => {
                 <ul className="menu bg-base-200 min-h-full w-60 p-4 flex flex-col gap-4">
                   {/* Sidebar content here */}
                   <Link to='/'><h1 className='flex items-center gap-3'><GoHome />Home</h1></Link>
-                  <Link to='/DashboardRoute'><h1 className='flex items-center gap-3'><MdOutlineDashboard />Dashboard Home</h1></Link>
+                  <Link to='/DashboardRoute'><h1 className='flex items-center gap-3'><MdOutlineDashboard />Overview</h1></Link>
                   <Link to='UserProfile'><h1 className='flex items-center gap-3'><FaRegUser />User Profile</h1></Link>
                   <Link to='MyRecipes'><h1 className='flex items-center gap-3'><PiCookingPotBold />My Recipes</h1></Link>
                   <Link to='AddRecipes'><h1 className='flex items-center gap-3'><MdOutlineAddComment />Add Recipes</h1></Link>
