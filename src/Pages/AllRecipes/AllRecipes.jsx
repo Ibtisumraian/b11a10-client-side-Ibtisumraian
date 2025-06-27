@@ -112,7 +112,7 @@ const AllRecipes = () => {
                                     <FaHeart className="text-lg" />
                                     <span className="text-lg font-semibold">Likes : {recipe.like_count}</span>
                                     </div>
-
+                                    <p>{recipe.instructions}</p>
                                     <button
                                     onClick={() => handleRecipeDetailsBtn(recipe._id)}
                                     className={`mt-2 btn w-full btn-sm sm:btn-md rounded-full transition-all duration-200 ${

@@ -128,97 +128,95 @@ const MyRecipes = () => {
                     </button></Link>
                 </div>
                 ) : (
-                recipes.map(recipe => {
-                    return (
-                    <div
-                        key={recipe._id}
-                        className={`w-full max-w-6xl mx-auto mb-12 rounded-2xl p-6 sm:p-8 lg:p-12 flex flex-col xl:flex-row gap-6 shadow-lg ${
-                        theme === 'dark' ? 'bg-gray-800' : 'bg-[#D0E5E0]'
-                        }`}
-                    >
-                        {/* Left Side - Image */}
-                        <div className="w-full xl:w-[40%] flex justify-center items-center">
-                        <img
-                            className="w-full h-48 sm:h-64 md:h-full object-cover rounded-xl shadow-md"
-                            src={
-                            recipe.photo ||
-                            'https://res.cloudinary.com/dd4np04jl/image/upload/v1748093770/placeholder_ji3q5g.jpg'
-                            }
-                            alt="Recipe"
-                        />
-                        </div>
-
-                        {/* Right Side - Content */}
-                        <div className="flex-1 flex flex-col justify-between gap-6">
-                        {/* Ingredients & Instructions */}
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div
-                            className={`p-4 sm:p-6 rounded-xl shadow-sm ${
-                                theme === 'dark' ? 'bg-[#0f1b28] text-white' : 'bg-white text-black'
-                            }`}
-                            >
-                            <h2 className="text-lg font-semibold mb-2">Ingredients</h2>
-                            <p className="text-sm sm:text-base">{recipe.ingredients}</p>
-                            </div>
-                            <div
-                            className={`p-4 sm:p-6 rounded-xl shadow-sm ${
-                                theme === 'dark' ? 'bg-[#0f1b28] text-white' : 'bg-white text-black'
-                            }`}
-                            >
-                            <h2 className="text-lg font-semibold mb-2">Instructions</h2>
-                            <p className="text-sm sm:text-base">{recipe.instructions}</p>
-                            </div>
-                        </div>
-
-                        {/* Meta Info */}
+                    <div className={`flex flex-col gap-8 w-full max-w-6xl mx-auto mt-8 px-4 ${theme === 'dark' ? 'text-white' : 'text-gray-800'}`}>
+                    {recipes.map(recipe => (
                         <div
-                            className={`p-4 sm:p-6 rounded-xl shadow-sm grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 ${
-                            theme === 'dark' ? 'bg-[#0f1b28] text-white' : 'bg-white text-black'
-                            }`}
+                        key={recipe._id}
+                        className={`rounded-2xl p-6 shadow-md transition hover:shadow-xl ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'}`}
                         >
+                        {/* Header: Image + Title + Buttons */}
+                        <div className="flex flex-col md:flex-row items-center justify-between gap-6 mb-6">
+                            <div className="flex items-center gap-6">
+                            <img
+                                src={recipe.photo || 'https://res.cloudinary.com/dd4np04jl/image/upload/v1748093770/placeholder_ji3q5g.jpg'}
+                                alt={recipe.title}
+                                className="w-32 h-24 sm:w-40 sm:h-28 object-cover rounded-lg shadow"
+                            />
                             <div>
-                            <h3 className="text-sm sm:text-lg font-semibold">Cuisine Type</h3>
-                            <p className="text-sm sm:text-base">{recipe.cuisine}</p>
+                                <h2 className="text-xl sm:text-2xl font-bold mb-1">{recipe.title}</h2>
+                                <p className="text-sm text-gray-400">Prep Time: {recipe.preparation_time} mins</p>
+                                <div className="text-sm text-[#005A52] flex items-center gap-2 mt-2">
+                                <FaHeart /> {recipe.like_count} likes
+                                </div>
                             </div>
-                            <div>
-                            <h3 className="text-sm sm:text-lg font-semibold">Prep Time</h3>
-                            <p className="text-sm sm:text-base">{recipe.preparation_time} mins</p>
                             </div>
-                            <div>
-                            <h3 className="text-sm sm:text-lg font-semibold">Categories</h3>
-                            <ul className="list-disc list-inside text-sm sm:text-base">
-                                {recipe.categories.map((cat, index) => (
-                                <li key={index}>{cat}</li>
-                                ))}
-                            </ul>
-                            </div>
-                            <div>
-                            <h3 className="text-sm sm:text-lg font-semibold">Likes</h3>
-                            <p className="text-[#005A52] flex items-center gap-2.5">
-                                <FaHeart /> <span>{recipe.like_count}</span>
-                            </p>
+                            <div className="flex gap-3">
+                            <button
+                                onClick={() => handleEditButton(recipe._id)}
+                                className="bg-[#3C393B] text-white px-4 py-2 rounded-xl hover:scale-105 transition-transform"
+                            >
+                                <MdEdit />
+                            </button>
+                            <button
+                                onClick={() => handleDeleteButton(recipe._id)}
+                                className="bg-[#bbad34] text-white px-4 py-2 rounded-xl hover:scale-105 transition-transform"
+                            >
+                                <MdDelete />
+                            </button>
                             </div>
                         </div>
 
-                        {/* Buttons */}
-                        <div className="grid grid-cols-2 gap-4">
-                            <button
-                            onClick={() => handleDeleteButton(recipe._id)}
-                            className="btn bg-[#bbad34] text-white text-xl p-3 rounded-xl shadow hover:scale-105 transition-transform"
-                            >
-                            <MdDelete />
-                            </button>
-                            <button
-                            onClick={() => handleEditButton(recipe._id)}
-                            className="btn bg-[#3C393B] text-white text-xl p-3 rounded-xl shadow hover:scale-105 transition-transform"
-                            >
-                            <MdEdit />
-                            </button>
+                        {/* Content Grid */}
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            {/* Ingredients */}
+                            <div>
+                            <label className="block font-semibold mb-1 text-sm">Ingredients</label>
+                            <div className={`p-3 rounded-lg text-sm whitespace-pre-wrap ${theme === 'dark' ? 'bg-[#0f1b28]' : 'bg-gray-100'}`}>
+                                {recipe.ingredients}
+                            </div>
+                            </div>
+
+                            {/* Instructions */}
+                            <div>
+                            <label className="block font-semibold mb-1 text-sm">Instructions</label>
+                            <div className={`p-3 rounded-lg text-sm whitespace-pre-wrap ${theme === 'dark' ? 'bg-[#0f1b28]' : 'bg-gray-100'}`}>
+                                {recipe.instructions}
+                            </div>
+                            </div>
+
+                            {/* Cuisine */}
+                            <div>
+                            <label className="block font-semibold mb-1 text-sm">Cuisine Type</label>
+                            <input
+                                type="text"
+                                disabled
+                                value={recipe.cuisine}
+                                className={`w-full rounded-lg px-3 py-2 text-sm ${theme === 'dark' ? 'bg-[#0f1b28] text-white' : 'bg-gray-100 text-black'}`}
+                            />
+                            </div>
+
+                            {/* Categories */}
+                            <div>
+                            <label className="block font-semibold mb-1 text-sm">Categories</label>
+                            <div className="flex flex-wrap gap-2">
+                                {recipe.categories.map((cat, idx) => (
+                                <span
+                                    key={idx}
+                                    className="bg-[#56c9c1] text-white px-3 py-1 rounded-full text-xs"
+                                >
+                                    {cat}
+                                </span>
+                                ))}
+                            </div>
+                            </div>
                         </div>
                         </div>
+                    ))}
                     </div>
-                    );
-                })
+
+
+
+
                 )}
   
 
