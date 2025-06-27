@@ -144,10 +144,10 @@ const Navbar = () => {
             </div>
           ) : (
             <>
-              <NavLink className="btn btn-sm md:btn-md" to="/Signin">
+              <NavLink className="text-white text-sm sm:text-lg" to="/Signin">
                 Sign In
               </NavLink>
-              <NavLink className="btn btn-sm md:btn-md" to="/Signup">
+              <NavLink className="text-white text-sm sm:text-lg" to="/Signup">
                 Sign Up
               </NavLink>
             </>
